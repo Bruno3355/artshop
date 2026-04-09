@@ -7,11 +7,13 @@
     repeating-radial-gradient(
       circle at 0 0,
       transparent 0,
-      rgba(212, 176, 122, 0.5) 40px
+      rgba(212, 176, 122, 0.5) 80px
     ),
     repeating-linear-gradient(
       rgba(138, 108, 56, 0.333),
-      rgba(138, 108, 56, 0.5)
+      rgba(138, 108, 56, 0.333) ,
+      rgba(138, 108, 56, 0.333) 30px,
+      rgba(138, 108, 56, 0.05)
     );
 }
 
@@ -31,4 +33,9 @@
       flex-direction: row;
     }
   
+}
+
+.image {
+  border: 3px solid var(--color-ring);
+  box-shadow: 0 0 15px 5px var(--color-foreground);
 }

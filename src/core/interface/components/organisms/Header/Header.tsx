@@ -1,13 +1,12 @@
 import { Grid } from "../../atoms/Grid/Grid";
 import { Col } from "../../atoms/Col/Col";
 import Link from "next/link";
-import Logo from "../../atoms/Logo/Logo";
 import NavTabs from "../NavTabs/NavTabs";
 import ButtonCart from "../../atoms/Buttons/ButtonCart";
 
 export default function Header() {
   return (
-    <header className="pt-2.5">
+    <header className="py-container-y">
     <Grid className="items-center">
         <Col xs={4} md={3}>
           <Link href={"/"} className="flex justify-center">

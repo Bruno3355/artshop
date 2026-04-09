@@ -2,25 +2,28 @@ import styles from "./Hero.module.css";
 import HeroContent from "../../molecules/HeroContent/HeroContent";
 import Image from "next/image";
 
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+}
 
-export default function Hero() {
+export default function Hero({ className }: Props) {
   return (
-    <div className={styles.container}>
-        <div className={styles.wrapper}>
-          <HeroContent/>
+    <div className={`${styles.container} ${className}`}>
+      <div className={styles.wrapper}>
+        <HeroContent />
 
-
+        <div className="max-w-72 flex flex-col gap-1">
           <Image
-            alt="hero image"
+            alt="Flower Still Life with a Timepiece. Creator: Willem van Aelst. Date: 1663. Institution: Mauritshuis."
             src={"/heropainting.jpg"}
             width={300}
             height={500}
-            className="w-full h-auto max-h-96 max-w-60"
-            style={{width: "100%", height:"auto"}}
+            className={styles.image}
             loading="eager"
           />
-
+          <figcaption className="w-full text-caption">Flower Still Life with a Timepiece. Creator: Willem van Aelst. Date: 1663. Institution: Mauritshuis.</figcaption>
         </div>
+      </div>
     </div>
   );
 }
