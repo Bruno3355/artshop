@@ -3,7 +3,7 @@ import { ShoppingCartIcon } from "lucide-react"
 
 export default function ButtonCart() {
   return (
-<Button variant={"ghost"}>
+<Button variant={"ghost"} >
     <ShoppingCartIcon strokeWidth={3}/>
     Cart
 </Button>

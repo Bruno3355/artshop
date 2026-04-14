@@ -1,41 +1,68 @@
 .container {
   display: flex;
-  align-items: center;
-  min-height: 25rem;
-  background-color: #d4b07a;
-  background-image:
-    repeating-radial-gradient(
-      circle at 0 0,
-      transparent 0,
-      rgba(212, 176, 122, 0.5) 80px
-    ),
-    repeating-linear-gradient(
-      rgba(138, 108, 56, 0.333),
-      rgba(138, 108, 56, 0.333) ,
-      rgba(138, 108, 56, 0.333) 30px,
-      rgba(138, 108, 56, 0.05)
-    );
+  align-items: stretch;
+  min-height: 28rem;
+  background-color: #1a1410;
 }
 
 .wrapper {
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: 70% 30%;
   align-items: center;
-  justify-content: space-between;
-  padding: var(--spacing-4);
   margin-inline: auto;
-  max-width: var(--container-max);
-  flex-direction: column;
-  gap: var(--spacing-4);
+  padding-inline: var(--spacing-section-x);
+}
+
+.imagePanel {
+  background-color: #0e0b08;
+  display: flex;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-8);
+  position: relative;
+  flex-shrink: 0;
 
   @media (min-width: 767px) {
-   
-      flex-direction: row;
-    }
-  
+    width: auto;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
 }
 
 .image {
-  border: 3px solid var(--color-ring);
-  box-shadow: 0 0 15px 5px var(--color-foreground);
+  display: block;
+  border: 2px solid #7a6040;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.7);
+}
+
+.yearBadge {
+  position: absolute;
+  top: 14px;
+  right: -16px;
+  background: #c8a96e;
+  color: #1a1410;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 4px 10px;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.imageCaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.58);
+  color: rgba(232, 213, 176, 0.6);
+  font-size: 0.6rem;
+  padding: 6px 8px;
+  line-height: 1.5;
 }

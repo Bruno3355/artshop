@@ -1,6 +1,8 @@
 import styles from "./Hero.module.css";
 import HeroContent from "../../molecules/HeroContent/HeroContent";
 import Image from "next/image";
+import { Grid } from "../../atoms/Grid/Grid";
+import { Col } from "../../atoms/Col/Col";
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
@@ -8,22 +10,33 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
 
 export default function Hero({ className }: Props) {
   return (
-    <div className={`${styles.container} ${className}`}>
-      <div className={styles.wrapper}>
-        <HeroContent />
-
-        <div className="max-w-72 flex flex-col gap-1">
-          <Image
-            alt="Flower Still Life with a Timepiece. Creator: Willem van Aelst. Date: 1663. Institution: Mauritshuis."
-            src={"/heropainting.jpg"}
-            width={300}
-            height={500}
-            className={styles.image}
-            loading="eager"
-          />
-          <figcaption className="w-full text-caption">Flower Still Life with a Timepiece. Creator: Willem van Aelst. Date: 1663. Institution: Mauritshuis.</figcaption>
+    <Grid className="w-full">
+      <Col md={8}>
+        <div className={`${styles.container} ${className}`}>
+          <div className={styles.wrapper}>
+            <HeroContent />
+          </div>
         </div>
-      </div>
-    </div>
+      </Col>
+
+      <Col sm={8} lg={4}>
+                  <div className={styles.imagePanel}>
+              <div className={styles.imageWrapper}>
+                <Image
+                  alt="Flower Still Life with a Timepiece. Creator: Willem van Aelst. Date: 1663. Institution: Mauritshuis."
+                  src={"/heropainting.jpg"}
+                  width={300}
+                  height={500}
+                  className={styles.image}
+                  loading="eager"
+                />
+                <span className={styles.yearBadge}>1663</span>
+                <figcaption className={styles.imageCaption}>
+                  Willem van Aelst · Mauritshuis
+                </figcaption>
+              </div>
+            </div>
+      </Col>
+    </Grid>
   );
 }

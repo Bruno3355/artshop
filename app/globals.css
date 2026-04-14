@@ -82,7 +82,7 @@
 :root {
   /* Base */
   --background: oklch(0.957 0.013 85);
-  --foreground: oklch(0.152 0.012 65);
+  --foreground: rgb(15, 11, 7);
 
   /* Card & Popover */
   --card: oklch(0.923 0.022 82);

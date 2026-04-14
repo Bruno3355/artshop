@@ -8,19 +8,33 @@ interface Props {
 export default function HeroContent({ className }: Props) {
   return (
     <div
-      className={`${className} px-14 py-16 bg-amber-50/30 rounded-4xl flex flex-col gap-y-card-gap`}
+      className={`${className} px-10 py-16 flex flex-col gap-y-card-gap`}
     >
-      <h2 className="uppercase font-bold">Exclusive collection 2026</h2>
-      <div>
-        <h1 className="text-display-xl italic font-semibold">
-          Art that <span className="italic ">transcends</span> centuries
+      <p
+        className="text-xs font-medium tracking-widest uppercase text-accent"
+      >
+        Exclusive Collection · 2026
+      </p>
+
+      <div className="flex flex-col gap-3">
+        <h1
+          className="text-display-xl font-serif text-secondary italic"
+        >
+          Art that <em>transcends</em> centuries
         </h1>
-        <span className="text-body-lg">
+        <p
+          className="text-body-lg text-accent"
+        >
           Carefully curated paintings, vases, and rare pieces to collect what
           time has made precious.
-        </span>
+        </p>
       </div>
-      <Button className={"bg-secondary text-primary hover:text-secondary hover:bg-accent"}>Explore Gallery</Button>
+
+      <Button
+        className="w-fit tracking-widest text-xs uppercase hover:opacity-90 transition-opacity bg-accent text-foreground, border-0"
+      >
+        Explore Gallery
+      </Button>
     </div>
   );
 }

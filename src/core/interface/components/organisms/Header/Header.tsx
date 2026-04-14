@@ -7,21 +7,21 @@ import ButtonCart from "../../atoms/Buttons/ButtonCart";
 export default function Header() {
   return (
     <header className="py-container-y">
-    <Grid className="items-center">
+      <Grid className="items-center">
         <Col xs={4} md={3}>
           <Link href={"/"} className="flex justify-center">
-            <h1 className="text-3xl">ANTIQUA</h1>
+            <h1 className="text-3xl font-semibold">ANTIQUA</h1>
           </Link>
         </Col>
 
-        <Col xs={4} md={3} lg={6}>
-        <NavTabs />
+        <Col xs={4} md={3} lg={7}>
+          <NavTabs />
         </Col>
 
-        <Col xs={4} md={2} lg={3}>
-        <ButtonCart />
+        <Col xs={4} md={2} lg={2} className="justify-center">
+          <ButtonCart />
         </Col>
-    </Grid>
+      </Grid>
     </header>
   );
 }

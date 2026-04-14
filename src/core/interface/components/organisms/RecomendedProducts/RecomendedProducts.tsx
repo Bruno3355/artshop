@@ -2,9 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { CardItem } from "../../molecules/CardItem/CardItem";
-import { Grid } from "../../atoms/Grid/Grid";
-import { Col } from "../../atoms/Col/Col";
-import Container from "../../atoms/Container/Container";
+import { mockData } from "@/prisma/mockdata";
+
 import {
   Carousel,
   CarouselContent,
@@ -13,53 +12,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-const mockData = [
-  {
-    image: {
-      source: "heropainting.jpg",
-      alt: "placeholder",
-    },
-    title: "Oil painting",
-    description: "XX Century canvas",
-    badge: "Exclusive deal",
-  },
-  {
-    image: {
-      source: "heropainting.jpg",
-      alt: "placeholder",
-    },
-    title: "Awesome painting",
-    description: "XXX Century canvas",
-    badge: "90% discount",
-  },
-  {
-    image: {
-      source: "heropainting.jpg",
-      alt: "placeholder",
-    },
-    title: "Awesome painting",
-    description: "XXX Century canvas",
-    badge: "90% discount",
-  },
-  {
-    image: {
-      source: "heropainting.jpg",
-      alt: "placeholder",
-    },
-    title: "Awesome painting",
-    description: "XXX Century canvas",
-    badge: "90% discount",
-  },
-  {
-    image: {
-      source: "heropainting.jpg",
-      alt: "placeholder",
-    },
-    title: "Awesome painting",
-    description: "XXX Century canvas",
-    badge: "90% discount",
-  },
-];
+
 
 export default function RecomendedProducts({
   className,
@@ -76,7 +29,7 @@ export default function RecomendedProducts({
         <span className="font-medium text-body-sm tracking-widest text-accent uppercase">
           Highlights
         </span>
-        <h2 className="text-display-md w-fit whitespace-nowrap">
+        <h2 className="text-display-lg font-semibold tracking-wide w-fit whitespace-nowrap">
           Best opportunities
         </h2>
         <div className="flex h-0.5 w-full bg-border"></div>
@@ -109,6 +62,7 @@ export default function RecomendedProducts({
       ) : (
         <div className="h-140 w-full animate-pulse bg-muted rounded-xl"></div>
       )}
+      <div className="py-section-y"></div>
     </div>
   );
 }
