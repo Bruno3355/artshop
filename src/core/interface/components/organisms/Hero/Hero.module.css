@@ -2,7 +2,7 @@
   display: flex;
   align-items: stretch;
   min-height: 28rem;
-  background-color: #1a1410;
+  background-color: var(--color-alternative-background);
 }
 
 .wrapper {

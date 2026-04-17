@@ -10,7 +10,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "sm:max-w-0.5 lg:max-w-60 btn-px btn-py flex  tracking-widest uppercase bg-accent hover:bg-ring text-background rounded-md",
+        default: "sm:max-w-0.5 lg:max-w-60 btn-px btn-py flex  tracking-widest uppercase bg-ring hover:bg-accent text-background rounded-md",
         outline:
           "border-border bg-background shadow-xs hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
         secondary:
