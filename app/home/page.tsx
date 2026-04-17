@@ -6,9 +6,9 @@ import RecomendedProducts from "@/src/core/interface/components/organisms/Recome
 
 export default function Home() {
   return (
-<div className="flex flex-col gap-section-y pb-section-y ">
+<div className="flex flex-col gap-section-y pb-section-y">
     <Hero className="py-section-y"/>
-    <RecomendedProducts className="bg-accent h-36"/>
+    <RecomendedProducts className="py-section-y"/>
     <AboutUs className="px-section-x" />
 </div>
   )

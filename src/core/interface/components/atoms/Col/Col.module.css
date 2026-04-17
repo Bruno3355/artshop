@@ -1,20 +1,24 @@
 .col {
   display: grid;
-  grid-column: span var(--col-xs);
+  grid-column-end: span var(--col-xs);
+  grid-column-start: var(--col-start-xs, auto);
 }
 
 @media (min-width: 576px) {
   .col {
-    grid-column: span var(--col-sm);
+    grid-column-end: span var(--col-sm);
+    grid-column-start: var(--col-start-sm);
   }
 }
 @media (min-width: 768px) {
   .col {
-    grid-column: span var(--col-md);
+    grid-column-end: span var(--col-md);
+    grid-column-start: var(--col-start-md);
   }
 }
 @media (min-width: 992px) {
   .col {
-    grid-column: span var(--col-lg);
+    grid-column-end: span var(--col-lg);
+    grid-column-start: var(--col-start-lg);
   }
 }

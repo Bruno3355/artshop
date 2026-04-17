@@ -7,15 +7,25 @@ interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   sm?: number;
   md?: number;
   lg?: number;
+  start?: number | 'auto';
+  smStart?: number | 'auto';
+  mdStart?: number | 'auto';
+  lgStart?: number | 'auto';
   className?: string;
 }
 
-export const Col = ({ children, xs = 4, sm, md, lg, className = '', style, ...props }: ColProps) => {
+export const Col = ({ children, xs = 4, sm, md, lg, start = 'auto', smStart, mdStart, lgStart, className = '', style, ...props }: ColProps) => {
   const vars = {
     '--col-xs': xs,
     '--col-sm': sm ?? xs,
     '--col-md': md ?? sm ?? xs,
     '--col-lg': lg ?? md ?? sm ?? xs,
+
+    '--col-start': start,
+    '--col-start-sm': smStart ?? start,
+    '--col-start-md': mdStart ?? smStart ?? start,
+    '--col-start-lg': lgStart ?? mdStart ?? smStart ?? start,
+    
   } as React.CSSProperties;
 
   return (

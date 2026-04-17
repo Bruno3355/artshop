@@ -12,7 +12,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Separator } from "@/components/ui/separator";
 
 
 
@@ -27,7 +26,7 @@ export default function RecomendedProducts({
   }, []);
 
   return (
-    <div className="flex flex-col px-2 h-240 justify-center">
+    <div className={`flex flex-col px-2 py-12 min-h-fit ${className}`}>
       <section className="flex flex-row gap-card-gap items-center pb-container-y px-section-x">
         <span className="font-medium text-body-sm tracking-widest text-accent uppercase">
           Highlights

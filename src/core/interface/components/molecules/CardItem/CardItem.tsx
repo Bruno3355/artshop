@@ -24,7 +24,7 @@ export function CardItem(props: propsType) {
   const { image, title, description, badge } = props;
 
   return (
-    <Card className="relative flex flex-col rounded-none h-146 min-w-72 w-full pt-0 shadow-[0_0_0_5px_var(--color-background),0_0_0_10px_var(--color-card)] border-0 hover:shadow-[0_0_0_5px_var(--color-background),0_0_20px_3px_var(--color-ring)]">
+    <Card className="relative flex flex-col rounded-none flex-1 min-w-72 w-full pt-0 shadow-[0_0_0_5px_var(--color-background),0_0_0_10px_var(--color-card)] border-0 hover:shadow-[0_0_0_5px_var(--color-background),0_0_20px_3px_var(--color-ring)]">
       <div className="h-96 shrink-0 relative overflow-hidden">
         <div className="absolute h-full inset-0 z-30 bg-black/15" />
         <img
