@@ -1,24 +1,25 @@
 .col {
-  display: grid;
-  grid-column-end: span var(--col-xs);
-  grid-column-start: var(--col-start-xs, auto);
+  grid-column-start: var(--start-xs);
+  grid-column-end: var(--end-xs);
 }
 
 @media (min-width: 576px) {
   .col {
-    grid-column-end: span var(--col-sm);
-    grid-column-start: var(--col-start-sm);
+    grid-column-start: var(--start-sm);
+    grid-column-end: var(--end-sm);
   }
 }
+
 @media (min-width: 768px) {
   .col {
-    grid-column-end: span var(--col-md);
-    grid-column-start: var(--col-start-md);
+    grid-column-start: var(--start-md);
+    grid-column-end: var(--end-md);
   }
 }
+
 @media (min-width: 992px) {
   .col {
-    grid-column-end: span var(--col-lg);
-    grid-column-start: var(--col-start-lg);
+    grid-column-start: var(--start-lg);
+    grid-column-end: var(--end-lg);
   }
 }

@@ -1,35 +1,63 @@
-import styles from "./Col.module.css"
+import styles from "./Col.module.css";
 import { ReactNode } from "react";
+
+type ColSize = number | "full";
 
 interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
-  xs?: number;
-  sm?: number;
-  md?: number;
-  lg?: number;
-  start?: number | 'auto';
-  smStart?: number | 'auto';
-  mdStart?: number | 'auto';
-  lgStart?: number | 'auto';
+  xs?: ColSize;
+  sm?: ColSize;
+  md?: ColSize;
+  lg?: ColSize;
+  start?: number | "auto";
+  smStart?: number | "auto";
+  mdStart?: number | "auto";
+  lgStart?: number | "auto";
   className?: string;
 }
 
-export const Col = ({ children, xs = 4, sm, md, lg, start = 'auto', smStart, mdStart, lgStart, className = '', style, ...props }: ColProps) => {
-  const vars = {
-    '--col-xs': xs,
-    '--col-sm': sm ?? xs,
-    '--col-md': md ?? sm ?? xs,
-    '--col-lg': lg ?? md ?? sm ?? xs,
+export const Col = ({
+  children,
+  xs = 'full',
+  sm,
+  md,
+  lg,
+  start = "auto",
+  smStart,
+  mdStart,
+  lgStart,
+  className = "",
+  style,
+  ...props
+}: ColProps) => {
+  const activeSm = sm ?? xs;
+  const activeMd = md ?? activeSm;
+  const activeLg = lg ?? activeMd;
 
-    '--col-start': start,
-    '--col-start-sm': smStart ?? start,
-    '--col-start-md': mdStart ?? smStart ?? start,
-    '--col-start-lg': lgStart ?? mdStart ?? smStart ?? start,
-    
+  const activeStartSm = smStart ?? start;
+  const activeStartMd = mdStart ?? activeStartSm;
+  const activeStartLg = lgStart ?? activeStartMd;
+
+  const vars = {
+    "--start-xs": xs === "full" ? "1" : start,
+    "--end-xs": xs === "full" ? "-1" : `span ${xs}`,
+
+    "--start-sm": activeSm === "full" ? "1" : activeStartSm,
+    "--end-sm": activeSm === "full" ? "-1" : `span ${activeSm}`,
+
+    "--start-md": activeMd === "full" ? "1" : activeStartMd,
+    "--end-md": activeMd === "full" ? "-1" : `span ${activeMd}`,
+
+    "--start-lg": activeLg === "full" ? "1" : activeStartLg,
+    "--end-lg": activeLg === "full" ? "-1" : `span ${activeLg}`,
   } as React.CSSProperties;
 
   return (
-    <div style={{...vars, ...style}} className={`${styles.col} ${className}`} {...props}>
+    <div
+      style={{ ...vars, ...style }}
+      className={`${styles.col} ${className}`}
+      {...props}
+    >
       {children}
     </div>
   );

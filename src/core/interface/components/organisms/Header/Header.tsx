@@ -18,7 +18,7 @@ export default function Header() {
           <NavTabs />
         </Col>
 
-        <Col xs={4} md={2} lg={2} className="justify-center">
+        <Col lg={2} className="flex justify-center">
           <ButtonCart />
         </Col>
       </Grid>
