@@ -11,7 +11,7 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
 export default function Hero({ className }: Props) {
   return (
     <Grid className="w-full min-h-200">
-      <Col md={8}>
+      <Col lg={8}>
         <div className={`${styles.container} ${className}`}>
           <div className={styles.wrapper}>
             <HeroContent />
@@ -19,7 +19,7 @@ export default function Hero({ className }: Props) {
         </div>
       </Col>
 
-      <Col sm={8} lg={4}>
+      <Col lg={4}>
         <div className={styles.imagePanel}>
           <div className={styles.imageWrapper}>
             <Image
