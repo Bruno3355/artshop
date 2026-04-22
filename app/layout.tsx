@@ -3,6 +3,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { cormorant, jost } from "@/lib/fonts";
 import Header from "@/src/core/interface/components/organisms/Header/Header";
+import Footer from "@/src/core/interface/components/organisms/Footer/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

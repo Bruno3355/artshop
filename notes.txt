@@ -1,1 +1,1 @@
-1) Add sizez prop in Images on AboutUs.tsx
+1) Centralize in a single place links and source of logos, alt so that it is necessary to only import it in the components, ensuring a single source of truth. (Link to header and footer up until this moment)
