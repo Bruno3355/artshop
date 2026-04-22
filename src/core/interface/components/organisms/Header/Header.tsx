@@ -3,6 +3,8 @@ import { Col } from "../../atoms/Col/Col";
 import Link from "next/link";
 import NavTabs from "../NavTabs/NavTabs";
 import ButtonCart from "../../atoms/Buttons/ButtonCart";
+import { Sheet, SheetTrigger } from "@/components/ui/sheet";
+import Cart from "../Cart/Cart";
 
 export default function Header() {
   return (
@@ -19,7 +21,7 @@ export default function Header() {
         </Col>
 
         <Col lg={2} className="flex justify-center">
-          <ButtonCart />
+          <Cart />
         </Col>
       </Grid>
     </header>
