@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { cormorant, jost } from "@/lib/fonts";
 import Header from "@/src/core/interface/components/organisms/Header/Header";
 import Footer from "@/src/core/interface/components/organisms/Footer/Footer";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -30,6 +31,23 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <Toaster
+          position="top-center"
+          closeButton
+          duration={4000}
+          visibleToasts={2}
+          style={{ "--width": "420px" } as React.CSSProperties}
+          toastOptions={{
+            classNames: {
+              toast: " !border !border-zinc-700 !text-accent",
+              title: "!font-bold",
+              description: "!text-primary",
+              actionButton: "!bg-accent",
+              cancelButton: "!bg-warning",
+              closeButton: "!bg-ring  !text-secondary",
+            },
+          }}
+        />
       </body>
     </html>
   );
