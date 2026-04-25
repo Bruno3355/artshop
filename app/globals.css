@@ -193,6 +193,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-sans); /* Jost --font-body */
+    letter-spacing: 0.025em;
   }
   html {
     @apply font-sans;
@@ -204,5 +205,6 @@
   h5,
   h6 {
     font-family: var(--font-heading); /* Cormorant Garamond  --font-display */
+    letter-spacing: 0.025em;
   }
 }
