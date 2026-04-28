@@ -31,7 +31,7 @@ export default function ContactForm() {
     },
   });
 
-  function onSubmit(data: ContactFormValues) {
+  function onSubmit(_data: ContactFormValues) {
     toast.success("Message sent!", {
       description: "Thank you for contacting us.",
     });
@@ -39,16 +39,12 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={form.handleSubmit(onSubmit)}>
-      <FieldSet>
-        <FieldLegend>
-          <h2 className="text-display-md font-extrabold">Contact Us</h2>
-        </FieldLegend>
-        <FieldDescription>
-          Questions about services or pricing? We've got you covered. Contact us
-          today.
-        </FieldDescription>
-        <FieldGroup>
+    <form
+      onSubmit={form.handleSubmit(onSubmit)}
+      className="flex flex-col h-full w-full justify-between"
+    >
+      <FieldSet className="flex-1 flex flex-col">
+        <FieldGroup className="flex-1 flex flex-col">
           <Controller
             name="fullName"
             control={form.control}
@@ -113,12 +109,16 @@ export default function ContactForm() {
             name="message"
             control={form.control}
             render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid}>
+              <Field
+                data-invalid={fieldState.invalid}
+                className="flex-1 flex flex-col"
+              >
                 <FieldLabel htmlFor="message">Message</FieldLabel>
                 <Textarea
                   {...field}
                   id="message"
                   placeholder="Type your message here."
+                  className="flex-1 resize-none"
                 />
                 {fieldState.invalid && (
                   <FieldError errors={[fieldState.error]} />
@@ -126,19 +126,14 @@ export default function ContactForm() {
               </Field>
             )}
           ></Controller>
-
-          <Field orientation="horizontal">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => form.reset()}
-            >
-              Reset
-            </Button>
-            <Button type="submit">Submit</Button>
-          </Field>
         </FieldGroup>
       </FieldSet>
+
+      <Field orientation="horizontal" className="flex justify-end gap-4 pt-4">
+        <Button type="submit" fullWidth>
+          Submit
+        </Button>
+      </Field>
     </form>
   );
 }
