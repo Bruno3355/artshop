@@ -45,19 +45,17 @@ export default function NewsletterInput({
         name="email"
         control={newsletterForm.control}
         render={({ field, fieldState }) => (
-          <FieldSet>
-            <Field data-invalid={fieldState.invalid}>
-              <Input
-                {...field}
-                type="email"
-                placeholder="youremail@email.com"
-                className="rounded-none 3xs md:w-92 h-12"
-              />
-              {fieldState.invalid && (
-                <FieldError errors={[fieldState.error]}></FieldError>
-              )}
-            </Field>
-          </FieldSet>
+          <Field data-invalid={fieldState.invalid}>
+            <Input
+              {...field}
+              type="email"
+              placeholder="youremail@email.com"
+              className="rounded-none 3xs md:w-92 h-12"
+            />
+            {fieldState.invalid && (
+              <FieldError errors={[fieldState.error]}></FieldError>
+            )}
+          </Field>
         )}
       ></Controller>
 

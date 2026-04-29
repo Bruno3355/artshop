@@ -6,7 +6,7 @@ export default function Newsletter() {
     <div className="flex flex-col justify-center items-center">
       <SeparatorDiamond />
       <h2 className="text-display-lg font-bold">Receive our news</h2>
-      <p className="text-body-lg font-light tracking-wide">
+      <p className="text-body-lg font-light tracking-wide px-container-x">
         Don't miss any exclusive pieces — sign up for our newsletter
       </p>
       <NewsletterInput className="py-container-y" />
