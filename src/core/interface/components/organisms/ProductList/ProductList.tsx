@@ -1,14 +1,33 @@
-import React from "react";
 import { Grid } from "../../atoms/Grid/Grid";
 import { Col } from "../../atoms/Col/Col";
 
 import FilterCollapsible from "../../molecules/FilterCollapsible/FilterCollapsible";
-import { id } from "zod/v4/locales";
-import FilterItem from "../../molecules/FilterItem/FilterItem";
 
-const Category = [
-  { label: "Paintings", id: "paintings" },
-  { label: "Antique", id: "antique" },
+const Categories = [
+  {
+    title: "Type",
+    items: [
+      { label: "Paintings", id: "paintings" },
+      { label: "Vases", id: "vases" },
+      { label: "Rare Pieces", id: "rare_pieces" },
+    ],
+  },
+  {
+    title: "Dimensions",
+    items: [
+      { label: "Small", id: "small" },
+      { label: "Medium", id: "medium" },
+      { label: "Large", id: "large" },
+    ],
+  },
+  {
+    title: "Condition",
+    items: [
+      { label: "Pristine", id: "pristine" },
+      { label: "Gently Aged", id: "gently_aged" },
+      { label: "Professionally Restored", id: "professionally_restored" },
+    ],
+  },
 ];
 
 export default function ProductList() {
@@ -16,9 +35,9 @@ export default function ProductList() {
     <Grid>
       <Col>
         <FilterCollapsible text="Filter">
-          <FilterCollapsible text="Option 1">
-            <FilterItem items={Category} />
-          </FilterCollapsible>
+          {Categories.map((item, key) => (
+            <FilterCollapsible categories={item} key={key} />
+          ))}
         </FilterCollapsible>
       </Col>
       <Col>b</Col>
