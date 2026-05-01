@@ -32,11 +32,11 @@ const FooterData: MenuItem[] = [
 
 export default function Footer() {
   return (
-    <div className="flex flex-col gap-container-y px-section-x bg-alternative-background">
+    <div className="flex flex-col gap-container-y px-section-x bg-primary">
       <div className="flex flex-col md:flex-row justify-center py-section-y gap-10 md:gap-0">
         <div className="flex flex-col gap-container-y text-secondary flex-1">
           <Link href={"/"} className="flex justify-start">
-            <h1 className="text-3xl font-semibold ">ANTIQUA</h1>
+            <h1 className="text-3xl font-medium ">ANTIQUA</h1>
           </Link>
           <p className="max-w-40 text-body-sm tracking-wide font-light">
             Art and rare items curated by experts for those who value what time
@@ -48,7 +48,7 @@ export default function Footer() {
             key={id}
             className="text-secondary flex-1 flex flex-col gap-container-y justify-center"
           >
-            <h3 className="uppercase tracking-wide font-extrabold">
+            <h3 className="uppercase tracking-wide font-medium">
               {element.title}
             </h3>
             <div className="flex flex-col">

@@ -13,13 +13,13 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-
-
 export default function RecomendedProducts({
   className,
 }: React.HTMLAttributes<HTMLDivElement>) {
   const [isMounted, setIsMounted] = useState(false);
-  const autoplayPlugin = useRef(Autoplay({ delay: 3000, stopOnInteraction: true  }));
+  const autoplayPlugin = useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: true }),
+  );
 
   useEffect(() => {
     setIsMounted(true);
@@ -31,7 +31,7 @@ export default function RecomendedProducts({
         <span className="font-medium text-body-sm tracking-widest text-accent uppercase">
           Highlights
         </span>
-        <h2 className="text-display-lg font-semibold tracking-wide w-fit whitespace-nowrap">
+        <h2 className="text-display-lg font-medium tracking-wide w-fit whitespace-nowrap">
           Best opportunities
         </h2>
         <div className="flex h-0.5 w-full bg-border"></div>
@@ -62,8 +62,7 @@ export default function RecomendedProducts({
             <CarouselPrevious className="static translate-y-0 cursor-pointer touch-manipulation" />
             <CarouselNext className="static translate-y-0 cursor-pointer touch-manipulation" />
           </div>
-        <div className="flex h-0.5 w-full bg-border"></div>
-
+          <div className="flex h-0.5 w-full bg-border"></div>
         </Carousel>
       ) : (
         <div className="h-140 w-full animate-pulse bg-muted rounded-xl"></div>

@@ -6,7 +6,6 @@
 
 @theme inline {
   --color-background: var(--background);
-  --color-alternative-background: var(--alternative-background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -92,7 +91,7 @@
   --popover: oklch(0.957 0.013 85);
   --popover-foreground: oklch(0.152 0.012 65);
 
-  --primary: oklch(0.152 0.012 65);
+  --primary: oklch(19.722% 0.01256 55.492);
   --primary-foreground: oklch(0.957 0.013 85);
 
   --secondary: oklch(0.923 0.022 82);
@@ -108,8 +107,6 @@
 
   --border: oklch(0.823 0.028 80);
   --input: oklch(0.823 0.028 80);
-
-  --alternative-background: oklch(19.722% 0.01256 55.492);
 
   --ring: oklch(0.49 0.095 65);
 
@@ -150,12 +147,10 @@
   --popover-foreground: oklch(0.957 0.013 85);
 
   --primary: #b6844c;
-  --primary-foreground: oklch(0.152 0.012 65);
+  --primary-foreground: oklch(19.722% 0.01256 55.492);
 
   --secondary: #393128;
   --secondary-foreground: oklch(0.957 0.013 85);
-
-  --alternative-background: oklch(19.722% 0.01256 55.492);
 
   --muted: oklch(0.318 0.02 68);
   --muted-foreground: oklch(0.555 0.022 70);
@@ -206,5 +201,8 @@
   h6 {
     font-family: var(--font-heading); /* Cormorant Garamond  --font-display */
     letter-spacing: 0.025em;
+  }
+  h2 {
+    font-weight: 500;
   }
 }

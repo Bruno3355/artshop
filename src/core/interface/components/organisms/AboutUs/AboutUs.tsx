@@ -8,7 +8,7 @@ export default function AboutUs({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <Grid
-      className={`items-center min-h-240 bg-alternative-background shadow-[0_0_0_5px_var(--color-background),0_0_0_15px_var(--color-border)] gap-container-x py-section-y ${className}`}
+      className={`items-center min-h-240 bg-primary shadow-[0_0_0_5px_var(--color-background),0_0_0_15px_var(--color-border)] gap-container-x py-section-y ${className}`}
     >
       <Col lg={6} className="flex justify-center">
         <Image
@@ -26,7 +26,7 @@ export default function AboutUs({
             <h3 className="text-2xl uppercase text-accent underline">
               Our history
             </h3>
-            <h2 className="text-5xl text-accent font-semibold">
+            <h2 className="text-5xl text-accent ">
               Eight Centuries of{" "}
               <span className="text-secondary">Excellence</span> in Fine Art
             </h2>

@@ -41,7 +41,7 @@ export function CardItem(props: propsType) {
           </CardAction>
 
           <div className="w-full flex flex-col items-center">
-            <CardTitle className="text-base font-extrabold tracking-wide uppercase">
+            <CardTitle className="text-base font-medium tracking-wide uppercase">
               {title}
             </CardTitle>
             <CardDescription className="line-clamp-2 col-span-2">
@@ -49,7 +49,7 @@ export function CardItem(props: propsType) {
             </CardDescription>
           </div>
 
-          <div className="h-1 w-1/2 border-2 bg-alternative-background"></div>
+          <div className="h-1 w-1/2 border-2 bg-primary"></div>
         </CardHeader>
 
         <CardFooter className="justify-center mt-auto">

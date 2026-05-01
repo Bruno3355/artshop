@@ -34,13 +34,12 @@ export default function ProductList() {
   return (
     <Grid>
       <Col>
-        <FilterCollapsible text="Filter">
-          {Categories.map((item, key) => (
-            <FilterCollapsible categories={item} key={key} />
-          ))}
-        </FilterCollapsible>
+        <h2 className="text-display-sm font-medium">Filter</h2>
+        {Categories.map((item, key) => (
+          <FilterCollapsible categories={item} key={key} variant="child" />
+        ))}
       </Col>
-      <Col>b</Col>
+      <Col>a</Col>
     </Grid>
   );
 }

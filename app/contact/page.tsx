@@ -12,9 +12,9 @@ import { Separator } from "@/components/ui/separator";
 export default function Contact() {
   return (
     <div className="flex flex-1 justify-center items-center py-section-y px-section-x">
-      <div className="flex flex-col gap-container-y p-section-y border-2 border-alternative-background rounded-2xl max-w-7xl mx-auto">
+      <div className="flex flex-col gap-container-y p-section-y border-2 border-primary rounded-2xl max-w-7xl mx-auto">
         <div>
-          <h2 className="text-display-md font-extrabold">Contact Us</h2>
+          <h2 className="text-display-md font-medium">Contact Us</h2>
           <span>
             Questions about services or pricing? We've got you covered. Contact
             us today.

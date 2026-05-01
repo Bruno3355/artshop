@@ -31,14 +31,21 @@ type WithCategories = {
   children?: React.ReactNode;
 };
 
-type FilterCollapsibleProps = WithText | WithCategories;
+type FilterCollapsibleProps = (WithText | WithCategories) & {
+  variant?: "parent" | "child";
+};
 
 export default function FilterCollapsible({
   text,
   categories,
   children,
+  variant,
 }: FilterCollapsibleProps) {
   const [open, setOpen] = useState(false);
+  const bgClass =
+    variant === "child"
+      ? "data-[state=open]:bg-primary data-[state=open]:text-primary-foreground"
+      : "";
 
   return (
     <Collapsible
@@ -48,8 +55,10 @@ export default function FilterCollapsible({
     >
       <CollapsibleTrigger asChild>
         <Button
-          variant={open ? "default" : "outline"}
-          className={"w-full flex justify-between uppercase"}
+          variant={"outline"}
+          className={`
+            w-full flex justify-between uppercase ${bgClass}
+          `}
         >
           {text ? text : categories?.title}
           <ChevronDownIcon />

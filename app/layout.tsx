@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { cormorant, jost } from "@/lib/fonts";
+import { cormorant, cinzel, jost } from "@/lib/fonts";
 import Header from "@/src/core/interface/components/organisms/Header/Header";
 import Footer from "@/src/core/interface/components/organisms/Footer/Footer";
 import { Toaster } from "@/components/ui/sonner";
@@ -22,7 +22,7 @@ export default function RootLayout({
       className={cn(
         "h-full",
         "antialiased",
-        cormorant.variable,
+        cinzel.variable,
         jost.variable,
         "font-sans",
       )}
