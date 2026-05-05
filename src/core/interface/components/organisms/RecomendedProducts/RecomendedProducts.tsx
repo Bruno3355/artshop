@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
-import { CardItem } from "../../molecules/CardItem/CardItem";
+import { CardRecomendedItem } from "../../molecules/Cards/CardRecomendedItem/CardItem";
 import { mockData } from "@/prisma/mockdata";
 
 import {
@@ -42,18 +42,17 @@ export default function RecomendedProducts({
           className="w-full"
           plugins={[autoplayPlugin.current]}
           opts={{
-            align: "start",
             loop: true,
             dragFree: true,
           }}
         >
-          <CarouselContent className="-ml-4">
+          <CarouselContent className="gap-4">
             {mockData.map((item, index) => (
               <CarouselItem
                 key={index}
-                className="p-card-gap pl-4 basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                className="basis-auto w-72 shrink-0 my-6"
               >
-                <CardItem {...item} />
+                <CardRecomendedItem {...item} />
               </CarouselItem>
             ))}
           </CarouselContent>

@@ -41,7 +41,7 @@ export default function FilterCollapsible({
   children,
   variant,
 }: FilterCollapsibleProps) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const bgClass =
     variant === "child"
       ? "data-[state=open]:bg-primary data-[state=open]:text-primary-foreground"
