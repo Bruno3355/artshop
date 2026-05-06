@@ -18,7 +18,7 @@ interface ColProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const Col = ({
   children,
-  xs = 'full',
+  xs = "full",
   sm,
   md,
   lg,

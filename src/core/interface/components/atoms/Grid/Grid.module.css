@@ -3,7 +3,6 @@
   grid-template-columns: repeat(12, 1fr);
   gap: var(--spacing-card-gap);
   width: 100%;
-  /* max-width: var(--container-max); */
   margin-inline: auto;
   padding-inline: var(--spacing-section-x);
 }

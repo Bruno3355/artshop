@@ -120,3 +120,7 @@ export interface propsType extends React.HTMLAttributes<HTMLDivElement> {
   price: number;
   className?: string;
 }
+
+export interface productsArray {
+  products: propsType[];
+}

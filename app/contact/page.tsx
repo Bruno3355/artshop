@@ -20,8 +20,8 @@ export default function Contact() {
             us today.
           </span>
         </div>
-        <Separator />
-        <Grid className="gap-container-x!">
+        <Separator className="my-container-y sm:my-0" />
+        <Grid className="gap-container-x! px-0!">
           <Col
             xs={"full"}
             md={6}

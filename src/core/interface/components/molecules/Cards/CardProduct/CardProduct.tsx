@@ -10,10 +10,12 @@ import {
 } from "@/components/ui/card";
 
 export default function CardProduct(data: propsType) {
-  const { image, title, description, price } = data;
+  const { image, title, description, price, className } = data;
 
   return (
-    <Card className="relative mx-auto min-h-70 w-full max-w-72 pt-0 hover:shadow-sm hover:shadow-ring cursor-pointer">
+    <Card
+      className={`relative min-h-70 w-full pt-0 hover:shadow-sm hover:shadow-ring cursor-pointer ${className}`}
+    >
       <div className="absolute inset-0 z-30 aspect-4/3 " />
       <img
         src={image?.miniature ?? "placeholder.webp"}
