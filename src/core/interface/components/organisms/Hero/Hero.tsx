@@ -24,11 +24,12 @@ export default function Hero({ className }: Props) {
           <div className={styles.imageWrapper}>
             <Image
               alt="Flower Still Life with a Timepiece. Creator: Willem van Aelst. Date: 1663. Institution: Mauritshuis."
-              src={"/heropainting.jpg"}
+              src={"/images/heropainting.webp"}
               width={300}
               height={500}
               className={styles.image}
               loading="eager"
+              priority
             />
             <span className={styles.yearBadge}>1663</span>
             <figcaption className={styles.imageCaption}>
