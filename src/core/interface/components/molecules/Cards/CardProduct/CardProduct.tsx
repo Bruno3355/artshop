@@ -14,7 +14,7 @@ export default function CardProduct(data: propsType) {
 
   return (
     <Card
-      className={`relative min-h-70 w-full pt-0 hover:shadow-sm hover:shadow-ring cursor-pointer ${className}`}
+      className={`relative min-h-100 w-full pt-0 hover:shadow-sm hover:shadow-ring cursor-pointer ${className}`}
     >
       <div className="absolute inset-0 z-30 aspect-4/3 " />
       <img
@@ -22,13 +22,15 @@ export default function CardProduct(data: propsType) {
         alt={image?.alt ?? "Placeholder image"}
         className="relative z-20 aspect-4/3 w-full object-cover brightness-90"
       />
-      <CardHeader>
-        <CardTitle className="font-medium">{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
-      </CardHeader>
-      <CardFooter className="flex justify-end underline">
-        {currencyConverter(price)}
-      </CardFooter>
+      <div className="flex flex-col flex-1 ">
+        <CardHeader>
+          <CardTitle className="font-medium">{title}</CardTitle>
+          <CardDescription>{description}</CardDescription>
+        </CardHeader>
+        <CardFooter className="flex justify-end underline mt-auto">
+          {currencyConverter(price)}
+        </CardFooter>
+      </div>
     </Card>
   );
 }
