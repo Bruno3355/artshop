@@ -1,11 +1,14 @@
-import { Button } from "@/components/ui/button"
-import { ShoppingCartIcon } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { ShoppingCartIcon } from "lucide-react";
 
-export default function ButtonCart() {
+export default function ButtonCart({
+  ref,
+  ...props
+}: React.ComponentProps<"button">) {
   return (
-<Button variant={"ghost"} >
-    <ShoppingCartIcon strokeWidth={3}/>
-    Cart
-</Button>
-  )
+    <Button ref={ref} variant={"ghost"} {...props}>
+      <ShoppingCartIcon strokeWidth={3} />
+      Cart
+    </Button>
+  );
 }

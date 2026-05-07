@@ -8,9 +8,8 @@ export default function ShopProductsCards({ products }: productsArray) {
     <div className="py-section-y sm:py-0 grid grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] w-full gap-y-section-y gap-x-container-x justify-items-center">
       {products.map(
         ({ title, description, image, price, badge, slug }, index) => (
-          <Link href={`/shop/${slug}`}>
+          <Link href={`/shop/${slug}`} key={index}>
             <CardProduct
-              key={index}
               title={title}
               description={description}
               image={image}

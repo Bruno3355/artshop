@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Sheet,
   SheetClose,
@@ -15,7 +17,9 @@ import { Separator } from "@/components/ui/separator";
 export default function Cart() {
   return (
     <Sheet>
-      <SheetTrigger render={<ButtonCart />}></SheetTrigger>
+      <SheetTrigger asChild>
+        <ButtonCart />
+      </SheetTrigger>
       <SheetContent>
         <SheetHeader>
           <SheetTitle className={"text-display-sm font-bold tracking-wide"}>
@@ -35,7 +39,11 @@ export default function Cart() {
           <Button fullWidth type="submit">
             Go to checkout
           </Button>
-          <SheetClose render={<Button variant={"outline"} />}>Close</SheetClose>
+          <SheetClose asChild>
+            <Button className="w-full" variant={"outline"}>
+              Close
+            </Button>
+          </SheetClose>
         </SheetFooter>
       </SheetContent>
     </Sheet>

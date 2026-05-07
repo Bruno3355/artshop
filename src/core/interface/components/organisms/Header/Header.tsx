@@ -2,13 +2,11 @@ import { Grid } from "../../atoms/Grid/Grid";
 import { Col } from "../../atoms/Col/Col";
 import Link from "next/link";
 import NavTabs from "../NavTabs/NavTabs";
-import ButtonCart from "../../atoms/Buttons/ButtonCart";
-import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import Cart from "../Cart/Cart";
 
 export default function Header() {
   return (
-    <header className="py-container-y mx-section-x border-b border-primary">
+    <header className="py-container-y mx-section-x mb-container-y border-b border-muted-foreground">
       <Grid className="items-center">
         <Col xs={4} md={3}>
           <Link href={"/"} className="flex justify-center">

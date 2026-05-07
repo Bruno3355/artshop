@@ -48,7 +48,7 @@ export default function Contact() {
 
             <Image
               alt="Flower Still Life with a Timepiece. Creator: Willem van Aelst. Date: 1663. Institution: Mauritshuis."
-              src={"/heropainting.jpg"}
+              src={"/images/heropainting.webp"}
               width={800}
               height={1200}
               loading="eager"

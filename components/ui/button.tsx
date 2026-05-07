@@ -51,18 +51,21 @@ function Button({
   size = "default",
   asChild = false,
   fullWidth = false,
+  ref,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
+    fullWidth?: boolean;
   }) {
   const Comp = asChild ? Slot.Root : "button";
   return (
     <Comp
+      ref={ref}
       data-slot="button"
       data-variant={variant}
       data-size={size}
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size, fullWidth, className }))}
       {...props}
     />
   );

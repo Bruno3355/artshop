@@ -10,6 +10,11 @@ const tabs = [
   { label: "Contact Us", href: "/contact" },
 ];
 
+const isActive = (pathname: string, href: string) => {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(href + "/");
+};
+
 export default function NavTabs() {
   const pathname = usePathname();
 
@@ -19,7 +24,7 @@ export default function NavTabs() {
         <Link
           key={href}
           href={href}
-          className={`${styles.tab} ${pathname === href ? styles.active : ""}`}
+          className={`${styles.tab} ${isActive(pathname, href) ? styles.active : ""}`}
         >
           {label}
         </Link>
