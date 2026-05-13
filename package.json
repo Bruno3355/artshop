@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build",
+    "setup": "prisma migrate deploy && prisma db seed",
     "start": "next start",
     "lint": "eslint"
   },
@@ -44,5 +45,6 @@
     "prisma": "^7.8.0",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "type": "module"
 }

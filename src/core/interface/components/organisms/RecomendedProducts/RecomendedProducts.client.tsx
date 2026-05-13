@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import { CardRecomendedItem } from "../../molecules/Cards/CardRecomendedItem/CardItem";
 import { mockData } from "@/prisma/mockdata";
-
 import {
   Carousel,
   CarouselContent,
@@ -12,10 +11,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Product } from "@/src/core/domain/entities/product";
 
-export default function RecomendedProducts({
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
+  products: Product[];
+}
+
+export default function RecomendedProductsClient({
+  products,
   className,
-}: React.HTMLAttributes<HTMLDivElement>) {
+}: Props) {
   const [isMounted, setIsMounted] = useState(false);
   const autoplayPlugin = useRef(
     Autoplay({ delay: 3000, stopOnInteraction: true }),
@@ -47,12 +52,23 @@ export default function RecomendedProducts({
           }}
         >
           <CarouselContent className="gap-4">
-            {mockData.map((item, index) => (
+            {products.map((product) => (
               <CarouselItem
-                key={index}
+                key={product.id}
                 className="basis-auto w-72 shrink-0 my-6"
               >
-                <CardRecomendedItem {...item} />
+                <CardRecomendedItem
+                  title={product.name}
+                  description={product.description ?? ""}
+                  price={product.price}
+                  slug={product.slug}
+                  badge={product.category.name}
+                  image={{
+                    source: product.imageUrl ?? "",
+                    miniature: product.miniature ?? "",
+                    alt: product.name,
+                  }}
+                />
               </CarouselItem>
             ))}
           </CarouselContent>

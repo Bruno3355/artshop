@@ -2,8 +2,6 @@
 
 A modern, scalable, and powerful e-commerce platform designed specifically for the commerce of art-related products, such as canvas, vases, jewelry, and more...
 
-
-
 ## Tech Stack
 
 ### Frontend & Framework
@@ -28,9 +26,6 @@ A modern, scalable, and powerful e-commerce platform designed specifically for t
 
 - **Upstash Redis** — (pending confirmation)
 
-
-
 ## Authors
 
 - [@Bruno3355](https://www.github.com/Bruno3355)
-

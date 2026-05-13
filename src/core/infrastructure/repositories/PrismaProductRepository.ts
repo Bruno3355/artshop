@@ -1,0 +1,36 @@
+import { prisma } from "@/lib/prisma";
+import { IProductRepository } from "../../domain/repositories/IProductRepository";
+import { Product } from "../../domain/entities/product";
+
+const mapProduct = (p: any): Product => ({
+  id: p.id,
+  slug: p.slug,
+  name: p.name,
+  description: p.description,
+  price: Number(p.price),
+  imageUrl: p.imageUrl,
+  miniature: p.miniature,
+  origin: p.origin,
+  createdAt: p.createdAt,
+  updatedAt: p.updatedAt,
+  categoryId: p.categoryId,
+  category: { name: p.category },
+});
+
+export const PrismaProductRepository: IProductRepository = {
+  async findAll(): Promise<Product[]> {
+    const results = await prisma.product.findMany({
+      //Verify include property. Perhaps add this property so that it is possible to search/filter from a certain text input?
+      orderBy: { createdAt: "desc" },
+    });
+    return results.map(mapProduct);
+  },
+
+  async findBySlug(slug: string): Promise<Product | null> {
+    const p = await prisma.product.findUnique({
+      where: { slug },
+    });
+    if (!p) return null;
+    return mapProduct(p);
+  },
+};
