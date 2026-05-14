@@ -4,13 +4,6 @@ import { notFound } from "next/navigation";
 import { BreadcrumbBasic } from "@/src/core/interface/components/atoms/BreadcrumbComponent";
 import ProductInfo from "@/src/core/interface/components/organisms/Product/ProductInfo";
 import { Separator } from "@/components/ui/separator";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Newsletter from "@/src/core/interface/components/organisms/Newsletter/Newsletter";
 
