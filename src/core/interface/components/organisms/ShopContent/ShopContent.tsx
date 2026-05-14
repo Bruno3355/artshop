@@ -1,12 +1,14 @@
-import { Grid } from "../../atoms/Grid/Grid";
-import { Col } from "../../atoms/Col/Col";
+import { PrismaProductRepository } from "@/src/core/infrastructure/repositories/PrismaProductRepository";
+import { getAllProducts } from "@/src/core/use_cases/GetAllProducts";
+
 import FilterSidebar from "../FilterSidebar/FilterSidebar";
 import ShopProductsCards from "../ShopProductsCards/ShopProductsCards";
 
-import { mockData } from "@/prisma/mockdata";
 import SearchBar from "../../molecules/SearchBar/SearchBar";
 
-export default function ShopContent() {
+export default async function ShopContent() {
+  const products = await getAllProducts(PrismaProductRepository);
+
   return (
     <div className="py-section-y px-section-x flex flex-col gap-y-section-y sm:gap-container-y">
       <div className="flex flex-col sm:flex-row gap-x-container-x items-start">
@@ -15,7 +17,7 @@ export default function ShopContent() {
           <FilterSidebar />
         </aside>
         <main className="flex-1 min-w-0">
-          <ShopProductsCards products={mockData} />
+          <ShopProductsCards products={products} />
         </main>
       </div>
     </div>

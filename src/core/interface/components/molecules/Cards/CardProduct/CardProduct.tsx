@@ -9,9 +9,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-export default function CardProduct(data: propsType) {
-  const { image, title, description, price, className } = data;
-
+export default function CardProduct({
+  image,
+  title,
+  description,
+  price,
+  className,
+}: propsType) {
   return (
     <Card
       className={`relative min-h-100 w-full pt-0 hover:shadow-sm hover:shadow-ring cursor-pointer ${className}`}

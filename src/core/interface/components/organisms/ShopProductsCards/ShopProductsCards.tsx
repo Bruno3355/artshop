@@ -1,25 +1,36 @@
 "use client";
-import { productsArray } from "@/prisma/mockdata";
+import { Product } from "@/src/core/domain/entities/product";
 import CardProduct from "../../molecules/Cards/CardProduct/CardProduct";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
-export default function ShopProductsCards({ products }: productsArray) {
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
+  products: Product[];
+}
+
+export default function ShopProductsCards({ products, className }: Props) {
   return (
-    <div className="py-section-y sm:py-0 grid grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] w-full gap-y-section-y gap-x-container-x justify-items-center">
-      {products.map(
-        ({ title, description, image, price, badge, slug }, index) => (
-          <Link href={`/shop/${slug}`} key={index}>
-            <CardProduct
-              title={title}
-              description={description}
-              image={image}
-              price={price}
-              badge={badge}
-              slug={slug}
-            />
-          </Link>
-        ),
+    <div
+      className={cn(
+        "py-section-y sm:py-0 grid grid-cols-[repeat(auto-fill,minmax(15rem,1fr))] w-full gap-y-section-y gap-x-container-x justify-items-center",
+        className,
       )}
+    >
+      {products.map((product) => (
+        <Link href={`/shop/${product.slug}`} key={product.id}>
+          <CardProduct
+            title={product.name}
+            description={product.description ?? ""}
+            image={{
+              source: product.imageUrl ?? "",
+              miniature: product.miniature ?? "",
+              alt: product.name,
+            }}
+            price={product.price}
+            slug={product.name}
+          />
+        </Link>
+      ))}
     </div>
   );
 }

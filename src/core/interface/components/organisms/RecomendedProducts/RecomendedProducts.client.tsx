@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import { CardRecomendedItem } from "../../molecules/Cards/CardRecomendedItem/CardItem";
-import { mockData } from "@/prisma/mockdata";
 import {
   Carousel,
   CarouselContent,
