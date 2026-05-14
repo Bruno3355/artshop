@@ -6,3 +6,4 @@ db password: fortknox
 3) Data that must be altered to receive from the Backend: FilterSidebar.tsx
 4) Insert more mockdata in the database
 5) Add action to the Contact us button inside the [products] page
+6) Add sources/references to product page

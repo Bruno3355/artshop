@@ -1,4 +1,5 @@
-import { mockData } from "@/prisma/mockdata";
+import { PrismaProductRepository } from "@/src/core/infrastructure/repositories/PrismaProductRepository";
+import { getAllProducts } from "@/src/core/use_cases/GetAllProducts";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { BreadcrumbBasic } from "@/src/core/interface/components/atoms/BreadcrumbComponent";
@@ -13,14 +14,15 @@ type ProductPageProps = {
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { products } = await params;
-  const product = mockData.find((p) => p.slug === products);
+  const allProducts = await getAllProducts(PrismaProductRepository);
+  const product = allProducts.find((p) => p.slug === products);
 
   if (!product) notFound();
 
   return (
     <div key={product.slug} className="px-section-x py-section-y">
       <BreadcrumbBasic
-        currentPage={product.title}
+        currentPage={product.name}
         items={[
           { href: "/home", label: "Home" },
           { href: "/shop", label: "Shop" },
@@ -31,8 +33,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <div className="col-span-12 md:col-span-4 py-container-y-lg md:py-0 grid place-items-center gap-container-y">
           <div className="p-2 border-2 bg-muted-foreground">
             <Image
-              src={product.image!.source}
-              alt={product.image.alt}
+              src={product.imageUrl ?? ""}
+              alt={product.imageAlt ?? ""}
               width={600}
               height={800}
               className="w-full max-w-lg h-auto"

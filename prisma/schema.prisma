@@ -25,8 +25,12 @@ model Product {
   name        String
   description String?
   price       Decimal  @db.Decimal(10, 2)
+  type        String?
+  dimensions  String?
+  condition   String?
   stock       Int      @default(1)
   imageUrl    String?
+  imageAlt    String?
   miniature   String?
   origin      String?
   createdAt   DateTime @default(now())

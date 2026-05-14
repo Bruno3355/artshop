@@ -4,7 +4,11 @@ export interface Product {
   name: string;
   description: string | null;
   price: number;
+  type: string;
+  dimensions: string;
+  condition: string;
   imageUrl: string | null;
+  imageAlt: string | null;
   miniature: string | null;
   origin: string | null;
   createdAt: Date;

@@ -24,7 +24,7 @@ export default function ShopProductsCards({ products, className }: Props) {
             image={{
               source: product.imageUrl ?? "",
               miniature: product.miniature ?? "",
-              alt: product.name,
+              alt: product.imageAlt ?? "",
             }}
             price={product.price}
             slug={product.name}
