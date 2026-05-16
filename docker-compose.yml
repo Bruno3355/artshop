@@ -1,14 +1,35 @@
 services:
   db:
-    image: mysql:8.0
-    restart: always
+    image: mysql:8.0.45
+    container_name: artshop_db
     environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: artshop_db
-      MYSQL_ROOT_PASSWORD: fortknox
     ports:
-      - '3306:3306'
+      - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    container_name: artshop_app
+    environment:
+      DATABASE_URL: "mysql://root@db:3306/artshop_db"
+      DATABASE_HOST: "db"
+      DATABASE_USER: "root"
+      DATABASE_PASSWORD: ""
+      DATABASE_NAME: "artshop_db"
+      DATABASE_PORT: "3306"
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
 
 volumes:
   db_data:

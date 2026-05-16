@@ -24,6 +24,7 @@ A modern, scalable, and powerful e-commerce platform designed specifically for t
 
 ### Infrastructure
 
+- **Docker**
 - **Upstash Redis** — (pending confirmation)
 
 ## Authors
