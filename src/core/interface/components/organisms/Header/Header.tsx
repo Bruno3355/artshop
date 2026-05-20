@@ -2,7 +2,7 @@ import { Grid } from "../../atoms/Grid/Grid";
 import { Col } from "../../atoms/Col/Col";
 import Link from "next/link";
 import NavTabs from "../NavTabs/NavTabs";
-import Cart from "../Cart/Cart";
+import Cart from "../Cart/CartContainer";
 
 export default function Header() {
   return (

@@ -7,3 +7,4 @@ db password: fortknox
 4) Insert more mockdata in the database
 5) Add action to the Contact us button inside the [products] page
 6) Add sources/references to product page
+7) Remove "Click me" button from CartContainer.tsx

@@ -3,6 +3,7 @@ export interface Product {
   slug: string;
   name: string;
   description: string | null;
+  badge: string | null;
   price: number;
   type: string;
   dimensions: string;

@@ -24,6 +24,7 @@ model Product {
   slug        String   @unique
   name        String
   description String?
+  badge       String?
   price       Decimal  @db.Decimal(10, 2)
   type        String?
   dimensions  String?

@@ -7,6 +7,7 @@ const mapProduct = (p: any): Product => ({
   slug: p.slug,
   name: p.name,
   description: p.description,
+  badge: p.badge,
   price: Number(p.price),
   imageUrl: p.imageUrl,
   imageAlt: p.imageAlt,

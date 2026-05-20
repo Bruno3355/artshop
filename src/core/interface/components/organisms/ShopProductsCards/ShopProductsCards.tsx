@@ -1,6 +1,6 @@
 "use client";
 import { Product } from "@/src/core/domain/entities/product";
-import CardProduct from "../../molecules/Cards/CardProduct/CardProduct";
+import CardProduct from "../../molecules/Cards/CardProduct";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 

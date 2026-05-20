@@ -1,5 +1,5 @@
 "use client";
-
+import { useEffect, useState } from "react";
 import {
   Sheet,
   SheetClose,
@@ -13,8 +13,20 @@ import {
 import ButtonCart from "../../atoms/Buttons/ButtonCart";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import CartSkeleton from "./CartSkeleton";
+import CardCartItem from "../../molecules/Cards/CardCartItem";
+import { useCartStore } from "@/src/hooks/useCartStore";
 
 export default function Cart() {
+  const [isMounted, setIsMounted] = useState(false);
+  const total = useCartStore((state) => state.total);
+  const items = useCartStore((state) => state.items);
+  const clearCart = useCartStore((state) => state.clearCart);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -30,18 +42,21 @@ export default function Cart() {
           </SheetDescription>
           <Separator />
         </SheetHeader>
-        <div className="grid flex-1 auto-rows-min gap-6 px-4">
-          <p>Item 1</p>
-          <p>Item 2</p>
-          <p>Item 3</p>
+        <div className={"mx-container-x"}>
+          {isMounted ? (
+            <CardCartItem items={items} total={total} />
+          ) : (
+            <CartSkeleton />
+          )}
         </div>
+        <button onClick={() => console.log(items)}> Click me </button>
         <SheetFooter>
           <Button fullWidth type="submit">
             Go to checkout
           </Button>
           <SheetClose asChild>
-            <Button className="w-full" variant={"outline"}>
-              Close
+            <Button className="w-full" variant={"outline"} onClick={clearCart}>
+              Clear cart
             </Button>
           </SheetClose>
         </SheetFooter>

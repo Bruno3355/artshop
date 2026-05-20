@@ -43,7 +43,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
 
         <div className="col-span-12 md:col-span-8">
-          <ProductInfo />
+          <ProductInfo product={product} />
         </div>
 
         <div className="col-span-12 md:col-span-4 w-full ">
