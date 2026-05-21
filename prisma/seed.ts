@@ -29,12 +29,16 @@ async function main() {
     {
       slug: "still-life-flowers-fruit",
       name: "Still life with flowers and fruit",
-      description: "18th Century canvas by Jan van Huysum",
+      description: `Jan van Huysum’s lasting fame centers on his exuberant arrangements and technical virtuosity. More than any other artist before or after, he was able to capture the dynamic energy of a profuse array of flowers and fruit. In this superb and large example, the bouquet fills the entire panel. Flowers overflowing their terra-cotta vase and peaches and grapes spilling over the foreground ledge create a sense of opulent abundance. Woven in and out of the densely packed bouquet of peonies, roses, carnations, and auriculae are the rhythmically flowing stems and blossoms of tulips, veronica, tuberoses, and hops. The artist masterfully integrated insects into his bouquet and suggested the translucence of dewdrops on petals and leaves. He often illuminated blossoms situated at the back of his bouquets and silhouetted darker foreground leaves and tendrils against them.
+
+Van Huysum was reportedly secretive about his technique, and he apparently forbade anyone, including his own brothers, to enter his studio for fear that they would learn how he purified and applied his colors. He spent a portion of each summer in Haarlem, already a major horticultural center in his day, in order to study flowers in bloom. The remarkable similarities in the shapes and character of individual blossoms in different still-life paintings indicate, however, that he also used drawn or painted models to satisfy pictorial demands.
+
+Trained by his father, Justus van Huysum the Elder (1659–1716), Jan derived his compositional ideas and technical prowess from the examples of Jan Davidsz de Heem (1606–1684) and Willem van Aelst (1626–1683). Following De Heem’s lead, Jan van Huysum organized his bouquets with sweeping rhythms that draw the eye in circular patterns throughout the composition and included flowers that do not bloom at the same time. Van Aelst’s work showed Van Huysum the advantages of massing brightly lit flowers in order to focus the dynamically swirling rhythms underlying his compositions.`,
       badge: null,
       price: 1250,
       imageUrl: "/images/stilllife.webp",
       miniature: "/miniatures/stilllife.webp",
-      imageAlt: "Floral still life with fruit by Jan van Huysum",
+      imageAlt: `"Floral still life with fruit by Jan van Huysum"`,
       categoryId: publicDomain.id,
       type: "paintings",
       dimensions: "large",
@@ -43,7 +47,8 @@ async function main() {
     {
       slug: "the-cannon-shot",
       name: "The cannon shot",
-      description: "17th Century canvas by L. Bakhuizen",
+      description:
+        "A Dutch warship in a calm, with its sails loosed, fires a cannon shot. Two sloops float to either side of the man-of-war, and another Dutch ship with lowered sails can be seen in the distance.",
       badge: "Staff Pick",
       price: 3400,
       imageUrl: "/images/cannonshot.webp",
@@ -57,7 +62,8 @@ async function main() {
     {
       slug: "ships-in-the-roads",
       name: "Ships in the roads",
-      description: "17th Century canvas by Willem van de Velde",
+      description:
+        "Willem van de Velde followed in his father’s footsteps and specialised in ship painting. Here, he gives an impression of a day on the water in almost dead calm. On the right, the crew of a three-master are hoisting the headsail, while a passenger is being rowed ashore. The activities are being watched from the yacht in the foreground right. The stern of the ship is richly decorated and bears a red Dutch lion and the Amsterdam coat of arms.",
       badge: "Best Seller",
       price: 2100,
       imageUrl: "/images/sailingships.webp",
@@ -71,7 +77,8 @@ async function main() {
     {
       slug: "arcadian-landscape",
       name: "Arcadian landscape",
-      description: "18th Century canvas by G. de Lairesse",
+      description:
+        "Arcadian Landscape, one of a series of ten murals in the garden room of the main floor of the Amsterdam house Herengracht 524 Publisher: Rijksmuseum Date: 1771 Providing institution: Rijksmuseum Aggregator: Rijksmuseum Providing Country: Netherlands Public Domain Arcadian Landscape, one of a series of ten murals in the garden room of the main floor of the Amsterdam house Herengracht 524 - 1771 - Rijksmuseum, Netherlands - Public Domain.",
       badge: "Great Value",
       price: 850,
       imageUrl: "/images/arcadianlandscape.webp",
@@ -99,7 +106,9 @@ async function main() {
     {
       slug: "fire-boss",
       name: "Fire-boss",
-      description: "19th Century canvas by W. Homer",
+      description: `Painted during a period of labor unrest in 1925, The Fire Boss was intended as a life-size personification of a profession rather than a portrait of a specific individual. Despite his downcast, bedraggled appearance, the miner exudes defiance and inner resolve. George Luks admired miners, and many aspects of the painting indicate that he was familiar with their lifestyle and equipment. The Fire Boss served as the centerpiece of a well-attended exhibition of Luks’s work at the Pottsville Free Public Library in October 1925. The event stirred considerable interest in an area where almost half of the local population consisted of miners and their families. The Fire Boss is a compelling image that arouses sympathy and admiration for the American laborer.
+
+Luks was raised in the heart of Pennsylvania’s anthracite coal region and spent his youth in the mining town of Shenandoah, in northern Schuylkill County. He later worked at a drugstore in Pottsville before moving to Philadelphia to study at the Pennsylvania Academy of the Fine Arts. Luks’s father was a physician who often tended to the needs of the impoverished and striking miners and was sympathetic to their plight. Luks always had an emotional bond with the area and regarded it as his home. In the 1920s the artist made regular summer painting trips to Pottsville, during which he produced many images of life in the mines.`,
       badge: null,
       price: 1750,
       imageUrl: "/images/fireboss.webp",
@@ -127,7 +136,10 @@ async function main() {
     {
       slug: "allies-day-1917",
       name: "Allies Day, May 1917",
-      description: "20th Century canvas by C. Hassam",
+      description: `
+      This painting commemorates the nation’s entry into World War I in spring 1917. Childe Hassam shows Fifth Avenue in New York City decorated with red, white, and blue flags. It had been declared “the Avenue of the Allies” in honor of the military alliance between the United States, Great Britain, and France.
+      This is part of a series of flag images in which Hassam used brilliant sunlight and color in the style of the French impressionists. The breezy, celebratory air glosses over the horrors of modern warfare that American soldiers would face fighting in Europe.
+      `,
       badge: "Masterpiece",
       price: 5500,
       imageUrl: "/images/alliesday.webp",

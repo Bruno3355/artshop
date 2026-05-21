@@ -29,7 +29,9 @@ export default function CardProduct({
       <div className="flex flex-col flex-1 ">
         <CardHeader>
           <CardTitle className="font-medium">{title}</CardTitle>
-          <CardDescription>{description}</CardDescription>
+          <CardDescription className="line-clamp-3">
+            {description}
+          </CardDescription>
         </CardHeader>
         <CardFooter className="flex justify-end underline mt-auto">
           {currencyConverter(price)}

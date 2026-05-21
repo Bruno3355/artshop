@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Product } from "@/src/core/domain/entities/product";
 import { useCartStore } from "@/src/hooks/useCartStore";
 import { currencyConverter } from "@/lib/currencyConverter";
+import { toast } from "sonner";
 
 interface Props {
   product: Product;
@@ -22,11 +23,15 @@ export default function ProductInfo({ product }: Props) {
       imageUrl: product.imageUrl,
       miniature: product.miniature,
     });
-    alert("Success!");
+    toast.success("Product added to cart!", {
+      description:
+        "You can click in the Cart button to checkout or keep searching other items.",
+      duration: 5000,
+    });
   };
 
   return (
-    <div className="w-full h-full flex flex-col justify-around gap-container-y px-container-x">
+    <div className="w-full h-full flex flex-col justify-between gap-container-y px-container-x">
       <div className="flex flex-col gap-container-y">
         {product?.badge && <Badge>{product.badge}</Badge>}
         <div className="py-container-y">
@@ -35,8 +40,7 @@ export default function ProductInfo({ product }: Props) {
         </div>
         <p className="text-justify">{product.description}</p>
       </div>
-
-      <div className="flex flex-col gap-container-y mt-auto">
+      <div className="flex flex-col gap-container-y">
         <Card className="py-section-y">
           <CardContent className="self-center text-display-md font-medium">
             {currencyConverter(product.price)}

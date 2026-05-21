@@ -16,6 +16,7 @@ import { Separator } from "@/components/ui/separator";
 import CartSkeleton from "./CartSkeleton";
 import CardCartItem from "../../molecules/Cards/CardCartItem";
 import { useCartStore } from "@/src/hooks/useCartStore";
+import { currencyConverter } from "@/lib/currencyConverter";
 
 export default function Cart() {
   const [isMounted, setIsMounted] = useState(false);
@@ -43,22 +44,21 @@ export default function Cart() {
           <Separator />
         </SheetHeader>
         <div className={"mx-container-x"}>
-          {isMounted ? (
-            <CardCartItem items={items} total={total} />
-          ) : (
-            <CartSkeleton />
-          )}
+          {isMounted ? <CardCartItem items={items} /> : <CartSkeleton />}
         </div>
-        <button onClick={() => console.log(items)}> Click me </button>
-        <SheetFooter>
-          <Button fullWidth type="submit">
-            Go to checkout
-          </Button>
-          <SheetClose asChild>
+        <SheetFooter className="flex flex-col gap-y-container-y ">
+          <div className="text-body-lg flex justify-between border-2 rounded-md border-ring py-container-y px-container-x">
+            <span className="underline font-medium">Cart total:</span>
+            {currencyConverter(total)}
+          </div>
+          <div>
+            <Button fullWidth type="submit">
+              Go to checkout
+            </Button>
             <Button className="w-full" variant={"outline"} onClick={clearCart}>
               Clear cart
             </Button>
-          </SheetClose>
+          </div>
         </SheetFooter>
       </SheetContent>
     </Sheet>

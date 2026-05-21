@@ -7,6 +7,7 @@ import ProductInfo from "@/src/core/interface/components/organisms/Product/Produ
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import Newsletter from "@/src/core/interface/components/organisms/Newsletter/Newsletter";
+import ProductAttachments from "@/src/core/interface/components/organisms/Product/ProductAttachments";
 
 type ProductPageProps = {
   params: Promise<{ products: string }>;
@@ -29,41 +30,26 @@ export default async function ProductPage({ params }: ProductPageProps) {
         ]}
       />
       <Separator className="my-container-y" />
-      <div className="grid grid-cols-12 relative w-full ">
-        <div className="col-span-12 md:col-span-4 py-container-y-lg md:py-0 grid place-items-center gap-container-y">
-          <div className="p-2 border-2 bg-muted-foreground">
-            <Image
-              src={product.imageUrl ?? ""}
-              alt={product.imageAlt ?? ""}
-              width={600}
-              height={800}
-              className="w-full max-w-lg h-auto"
-            />
-          </div>
+      <div className="grid grid-cols-12 relative w-full justify-center items-end">
+        <div className="col-span-12 md:col-span-4 py-container-y-lg md:py-0 grid gap-container-y h-full content-around justify-center">
+          <Image
+            src={product.imageUrl ?? ""}
+            alt={product.imageAlt ?? ""}
+            width={600}
+            height={800}
+            className="w-full max-w-lg h-auto p-2 border-2 bg-muted-foreground"
+          />
+          <ProductAttachments className="hidden md:block" />
         </div>
 
-        <div className="col-span-12 md:col-span-8">
+        <div className="col-span-12 md:col-span-8 h-full">
           <ProductInfo product={product} />
         </div>
 
-        <div className="col-span-12 md:col-span-4 w-full ">
-          <div className="rounded-t-md bg-muted border px-container-x py-container-y-sm mt-section-y md:my-container-y gap-container-y flex flex-col">
-            <div className="font-medium underline">Attachments</div>
-            <Separator />
-            <div>Files go here</div>
-          </div>
-
-          <div className="rounded-b-md bg-muted border flex justify-between items-center my-container-y px-container-x py-container-y-sm">
-            <span className="font-medium">Need help?</span>
-            <Button
-              variant={"outline"}
-              className="hover:bg-accent hover:text-accent-foreground"
-            >
-              Contact us
-            </Button>
-          </div>
-        </div>
+        <div className="col-span-12 md:col-span-4 w-full "></div>
       </div>
+      <ProductAttachments className="block md:hidden" />
+
       <Newsletter className="pt-section-y" />
     </div>
   );

@@ -1,14 +1,22 @@
-import { Cart } from "@/src/core/domain/entities/cart";
+import { CartItem } from "@/src/core/domain/entities/cart";
 import { currencyConverter } from "@/lib/currencyConverter";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Minus, Plus } from "lucide-react";
+import { useCartStore } from "@/src/hooks/useCartStore";
 
-export default function CardCartItem({ items, total }: Cart) {
+interface CartItemProps {
+  items: CartItem[];
+}
+
+export default function CardCartItem({ items }: CartItemProps) {
+  const increaseQuantity = useCartStore((state) => state.increaseQuantity);
+  const decreaseQuantity = useCartStore((state) => state.decreaseQuantity);
+
   if (!items || items.length == 0) {
     return <div>Your cart is empty.</div>;
   }
-  {
-    /* Add remove item from cart icon */
-  }
+
   return (
     <div className="flex flex-col gap-4">
       {items.map((product) => (
@@ -22,13 +30,35 @@ export default function CardCartItem({ items, total }: Cart) {
             width={100}
             height={100}
           />
-          <div className="flex flex-col flex-1 justify-center">
+          <div className="flex flex-col flex-1 justify-between">
             <h3 className="font-bold">{product.name}</h3>
-            <div className="text-sm">Quantity: {product.quantity}</div>
-            <div className="text-sm">
-              Total price: {currencyConverter(total)}
+            <div>
+              <div className="text-sm flex gap-container-x justify-between">
+                <span className="underline">Price (per item):</span>
+                {currencyConverter(product.price)}
+              </div>
+              <div className="text-sm flex gap-container-x justify-between">
+                <span className="underline">Quantity:</span>
+                {product.quantity}
+              </div>
             </div>
-            {/* Add minus and more buttons for changing quantity */}
+            <div className="flex gap-container-x justify-center pt-container-y content-end">
+              <Button
+                variant={"outline"}
+                className="h-6 w-10"
+                onClick={() => increaseQuantity(product.id)}
+              >
+                <Plus color="#b6844c" size={60} />
+              </Button>
+              <Button
+                variant={"outline"}
+                size={"icon"}
+                className="h-6 w-10"
+                onClick={() => decreaseQuantity(product.id)}
+              >
+                <Minus color="#b6844c" size={60} />
+              </Button>
+            </div>
           </div>
         </div>
       ))}
