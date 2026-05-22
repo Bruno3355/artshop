@@ -12,14 +12,18 @@ interface BreadcrumbData {
   href: string;
 }
 
-interface BreadCrumbDataProps {
+interface BreadCrumbDataProps extends React.HTMLAttributes<"div"> {
   items: BreadcrumbData[];
   currentPage: string;
 }
 
-export function BreadcrumbBasic({ items, currentPage }: BreadCrumbDataProps) {
+export function BreadcrumbBasic({
+  items,
+  currentPage,
+  className,
+}: BreadCrumbDataProps) {
   return (
-    <Breadcrumb>
+    <Breadcrumb className={className}>
       <BreadcrumbList>
         {items.flatMap((element) => [
           <BreadcrumbItem key={`item-${element.href}`}>

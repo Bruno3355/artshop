@@ -8,6 +8,7 @@ import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import Newsletter from "@/src/core/interface/components/organisms/Newsletter/Newsletter";
 import ProductAttachments from "@/src/core/interface/components/organisms/Product/ProductAttachments";
+import Link from "next/link";
 
 type ProductPageProps = {
   params: Promise<{ products: string }>;
@@ -21,14 +22,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
   if (!product) notFound();
 
   return (
-    <div key={product.slug} className="px-section-x py-section-y">
-      <BreadcrumbBasic
-        currentPage={product.name}
-        items={[
-          { href: "/home", label: "Home" },
-          { href: "/shop", label: "Shop" },
-        ]}
-      />
+    <div key={product.slug} className="px-section-x py-section-y flex flex-col">
+      <div className="flex justify-between items-center">
+        <BreadcrumbBasic
+          currentPage={product.name}
+          items={[
+            { href: "/home", label: "Home" },
+            { href: "/shop", label: "Shop" },
+          ]}
+        />
+        <Link href={"/shop"}>
+          <Button variant={"outline"}>Back to catalog</Button>
+        </Link>
+      </div>
       <Separator className="my-container-y" />
       <div className="grid grid-cols-12 relative w-full justify-center items-end">
         <div className="col-span-12 md:col-span-4 py-container-y-lg md:py-0 grid gap-container-y h-full content-around justify-center">
@@ -50,7 +56,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </div>
       <ProductAttachments className="block md:hidden" />
 
-      <Newsletter className="pt-section-y" />
+      <div className="flex-1 flex items-center justify-center w-full mt-section-y">
+        <Newsletter className="flex-1" />
+      </div>
     </div>
   );
 }

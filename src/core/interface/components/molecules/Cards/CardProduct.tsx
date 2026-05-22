@@ -29,7 +29,7 @@ export default function CardProduct({
       <div className="flex flex-col flex-1 ">
         <CardHeader>
           <CardTitle className="font-medium">{title}</CardTitle>
-          <CardDescription className="line-clamp-3">
+          <CardDescription className="line-clamp-2">
             {description}
           </CardDescription>
         </CardHeader>

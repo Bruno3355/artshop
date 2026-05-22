@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
+
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetDescription,
   SheetFooter,
@@ -17,6 +17,7 @@ import CartSkeleton from "./CartSkeleton";
 import CardCartItem from "../../molecules/Cards/CardCartItem";
 import { useCartStore } from "@/src/hooks/useCartStore";
 import { currencyConverter } from "@/lib/currencyConverter";
+import Link from "next/link";
 
 export default function Cart() {
   const [isMounted, setIsMounted] = useState(false);
@@ -52,9 +53,9 @@ export default function Cart() {
             {currencyConverter(total)}
           </div>
           <div>
-            <Button fullWidth type="submit">
-              Go to checkout
-            </Button>
+            <Link href={"/api/checkout-access"}>
+              <Button fullWidth>View cart</Button>
+            </Link>
             <Button className="w-full" variant={"outline"} onClick={clearCart}>
               Clear cart
             </Button>

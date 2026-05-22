@@ -17,7 +17,11 @@ export default function ShopProductsCards({ products, className }: Props) {
       )}
     >
       {products.map((product) => (
-        <Link href={`/shop/${product.slug}`} key={product.id}>
+        <Link
+          href={`/shop/${product.slug}`}
+          key={product.id}
+          className="w-full"
+        >
           <CardProduct
             title={product.name}
             description={product.description ?? ""}

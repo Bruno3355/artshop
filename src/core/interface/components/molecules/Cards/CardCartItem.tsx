@@ -29,6 +29,7 @@ export default function CardCartItem({ items }: CartItemProps) {
             alt={product.name}
             width={100}
             height={100}
+            className="w-auto h-auto"
           />
           <div className="flex flex-col flex-1 justify-between">
             <h3 className="font-bold">{product.name}</h3>
