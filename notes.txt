@@ -4,3 +4,4 @@
 3) Data that must be altered to receive from the Backend: FilterSidebar.tsx
 4) Insert more mockdata in the database
 6) Add sources/references to product page
+7) Create infrastructure repositories (PrismaOrderRepository.ts and PrismaOrderItemRepository.ts) implementations for IOrderRepository and IOrderItemRepository.ts

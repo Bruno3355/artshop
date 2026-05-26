@@ -9,9 +9,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Link from "next/link";
 
 export function CardRecomendedItem(props: propsType) {
-  const { image, title, description, badge } = props;
+  const { image, title, description, badge, slug } = props;
 
   return (
     <Card className="h-full relative flex flex-col rounded-none w-full pt-0 shadow-[0_0_0_5px_var(--color-background),0_0_0_10px_var(--color-card)] border-0 hover:shadow-[0_0_0_5px_var(--color-background),0_0_20px_3px_var(--color-ring)]">
@@ -43,7 +44,9 @@ export function CardRecomendedItem(props: propsType) {
         </CardHeader>
 
         <CardFooter className="justify-center mt-auto">
-          <Button className="w-full">View Item</Button>
+          <Link href={`shop/${slug}`}>
+            <Button className="w-full">View Item</Button>
+          </Link>
         </CardFooter>
       </div>
     </Card>

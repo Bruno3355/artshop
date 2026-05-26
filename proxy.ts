@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(request: NextRequest) {
+export default function proxy(request: NextRequest) {
   const hasAccess = request.cookies.get("checkout_access")?.value === "true";
 
   if (!hasAccess) {
@@ -8,7 +8,7 @@ export function middleware(request: NextRequest) {
   }
 
   const response = NextResponse.next();
-  response.cookies.delete("checkout_access"); //Ensures that the user can only access through the Cart button (not directly through URL)
+  // response.cookies.delete("checkout_access"); //Ensures that the user can only access through the Cart button (not directly through URL)
   return response;
 }
 
