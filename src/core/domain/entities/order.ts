@@ -4,6 +4,7 @@ import { OrderItem } from "./orderItem";
 export interface Order {
   id: string;
   createdAt: Date;
+  orderNumber: string;
   customerEmail: string;
   customerName: string;
   customerPhone: string | null;

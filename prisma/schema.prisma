@@ -68,6 +68,7 @@ model CartItem {
 model Order {
   id String @id @default(uuid())
 
+  orderNumber     String  @unique
   customerName    String
   customerEmail   String
   customerPhone   String?

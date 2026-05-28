@@ -5,6 +5,7 @@ import { Order } from "../entities/order";
 export interface IOrderRepository {
   findAll(): Promise<Order[]>;
   findById(id: string): Promise<Order | null>;
+  findByOrderNumber(orderNumber: string): Promise<Order | null>;
   create(data: CreateOrderDTO): Promise<Order>;
   update(id: string, data: UpdateOrderDTO): Promise<Order>;
   delete(id: string): Promise<void>;

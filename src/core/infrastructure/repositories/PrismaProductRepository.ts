@@ -38,4 +38,12 @@ export const PrismaProductRepository: IProductRepository = {
     if (!p) return null;
     return mapProduct(p);
   },
+
+  async findById(id: string): Promise<Product | null> {
+    const p = await prisma.product.findUnique({
+      where: { id },
+    });
+    if (!p) return null;
+    return mapProduct(p);
+  },
 };

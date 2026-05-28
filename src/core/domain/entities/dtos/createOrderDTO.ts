@@ -1,4 +1,5 @@
 export interface CreateOrderDTO {
+  orderNumber: string;
   customerEmail: string;
   customerName: string;
   customerPhone?: string | null;

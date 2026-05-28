@@ -2,7 +2,11 @@ import { prisma } from "@/lib/prisma";
 import { IOrderRepository } from "../../domain/repositories/IOrderRepository";
 
 export const makeOrderRepository = (): IOrderRepository => {
-  const includeItems = { items: true };
+  const includeItems = {
+    items: {
+      include: { product: true },
+    },
+  } as const;
 
   return {
     async create(data) {
@@ -13,6 +17,12 @@ export const makeOrderRepository = (): IOrderRepository => {
     },
     async findById(id) {
       return prisma.order.findUnique({ where: { id }, include: includeItems });
+    },
+    async findByOrderNumber(orderNumber) {
+      return prisma.order.findUnique({
+        where: { orderNumber },
+        include: includeItems,
+      });
     },
     async update(id, data) {
       return prisma.order.update({
