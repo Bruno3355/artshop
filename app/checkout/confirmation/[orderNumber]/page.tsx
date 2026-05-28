@@ -2,6 +2,7 @@ import { Separator } from "@/components/ui/separator";
 import { currencyConverter } from "@/lib/currencyConverter";
 import { makeOrderRepository } from "@/src/core/infrastructure/repositories/PrismaOrderRepository";
 import CardOrderItemDisplay from "@/src/core/interface/components/molecules/Cards/CardOrderItemDisplay";
+import ClearCartOnMount from "@/src/core/use_cases/ClearCartOnMount";
 import GetOrderByOrderNumber from "@/src/core/use_cases/GetOrderByOrderNumber";
 
 interface Props {
@@ -16,6 +17,7 @@ export default async function Confirmation({ params }: Props) {
 
   return (
     <div className="pb-section-y px-section-x flex flex-col">
+      <ClearCartOnMount />
       <div className="pt-section-y flex flex-col gap-container-y">
         <div>
           <h1 className="text-display-md">Order Confirmed!</h1>
