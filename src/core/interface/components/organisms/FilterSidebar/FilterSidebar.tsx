@@ -1,4 +1,3 @@
-import React from "react";
 import FilterCollapsible from "../../molecules/FilterCollapsible/FilterCollapsible";
 
 const Categories = [

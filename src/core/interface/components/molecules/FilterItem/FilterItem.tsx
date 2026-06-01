@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { Check } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface FilterData {
   id: string;
@@ -16,6 +17,24 @@ interface FilterItemProps {
 
 export default function FilterItem({ items }: FilterItemProps) {
   const [selected, setSelected] = useState<string[]>([]);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  function handleClick(id: string) {
+    setSelected((prev) =>
+      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id],
+    );
+
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (params.get("q") === id) {
+      params.delete("q");
+    } else {
+      params.set("q", id);
+    }
+
+    router.push(`/shop?${params.toString()}`);
+  }
 
   return (
     <ToggleGroup
@@ -30,6 +49,7 @@ export default function FilterItem({ items }: FilterItemProps) {
           key={item.id}
           value={item.id}
           className="w-full flex flex-col justify-center items-start min-h-12"
+          onClick={() => handleClick(item.id)}
         >
           <span className="w-full py-container-y px-container-x flex justify-between">
             {item.label}

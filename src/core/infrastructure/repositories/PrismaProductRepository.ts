@@ -25,7 +25,6 @@ const mapProduct = (p: any): Product => ({
 export const PrismaProductRepository: IProductRepository = {
   async findAll(): Promise<Product[]> {
     const results = await prisma.product.findMany({
-      //Verify include property. Perhaps add this property so that it is possible to search/filter from a certain text input?
       orderBy: { createdAt: "desc" },
     });
     return results.map(mapProduct);
@@ -45,5 +44,25 @@ export const PrismaProductRepository: IProductRepository = {
     });
     if (!p) return null;
     return mapProduct(p);
+  },
+
+  async search(query: string): Promise<Product[]> {
+    const results = await prisma.product.findMany({
+      where: {
+        OR: [
+          { name: { contains: query } },
+          { description: { contains: query } },
+          { origin: { contains: query } },
+          { category: { name: { contains: query } } },
+          { type: { contains: query } },
+          { dimensions: { contains: query } },
+          { condition: { contains: query } },
+        ],
+      },
+      include: { category: true },
+      orderBy: { createdAt: "desc" },
+    });
+
+    return results.map(mapProduct);
   },
 };

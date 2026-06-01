@@ -21,11 +21,12 @@ export default async function Confirmation({ params }: Props) {
       <div className="pt-section-y flex flex-col gap-container-y">
         <div>
           <h1 className="text-display-md">Order Confirmed!</h1>
-          <span className="underline">Order Number: #{order.id}</span>
+          <span className="underline">Order Number: #{order.orderNumber}</span>
         </div>
         <p>
-          Thank you, {order.customerName} for your purchase. Your item is being
-          carefully packed and will be on its way to you soon.
+          Thank you, <span className="underline">{order.customerName}</span> for
+          your purchase. Your item is being carefully packed and will be on its
+          way to you soon.
         </p>
       </div>
       <Separator className="mt-container-y mb-section-y" />
