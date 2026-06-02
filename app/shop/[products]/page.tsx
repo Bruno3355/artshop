@@ -27,7 +27,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <BreadcrumbBasic
           currentPage={product.name}
           items={[
-            { href: "/home", label: "Home" },
+            { href: "/", label: "Home" },
             { href: "/shop", label: "Shop" },
           ]}
         />

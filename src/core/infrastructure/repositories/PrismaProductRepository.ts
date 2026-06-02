@@ -13,6 +13,7 @@ const mapProduct = (p: any): Product => ({
   imageAlt: p.imageAlt,
   miniature: p.miniature,
   origin: p.origin,
+  source: p.source,
   type: p.type,
   dimensions: p.dimensions,
   condition: p.condition,

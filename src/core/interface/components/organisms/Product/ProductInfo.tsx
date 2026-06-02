@@ -6,6 +6,7 @@ import { Product } from "@/src/core/domain/entities/product";
 import { useCartStore } from "@/src/hooks/useCartStore";
 import { currencyConverter } from "@/lib/currencyConverter";
 import { toast } from "sonner";
+import { Separator } from "@/components/ui/separator";
 
 interface Props {
   product: Product;
@@ -39,6 +40,12 @@ export default function ProductInfo({ product }: Props) {
           <h2 className="text-muted-foreground capitalize">{product.type}</h2>
         </div>
         <p className="text-justify">{product.description}</p>
+        <Separator />
+        <p className="text-justify">
+          <span className="underline">Source (Image & Text):</span>
+          {"  "}
+          {product.source}
+        </p>
       </div>
       <div className="flex flex-col gap-container-y">
         <Card className="py-section-y">

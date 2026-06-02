@@ -33,6 +33,7 @@ model Product {
   imageUrl    String?
   imageAlt    String?
   miniature   String?
+  source      String?  @db.Text
   origin      String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

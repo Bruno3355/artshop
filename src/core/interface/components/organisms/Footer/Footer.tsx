@@ -14,7 +14,7 @@ const FooterData: MenuItem[] = [
   {
     title: "Explore",
     links: [
-      { text: "Home", url: "/home" },
+      { text: "Home", url: "/" },
       { text: "Product List", url: "/shop" },
       { text: "Contact us", url: "/contact" },
     ],

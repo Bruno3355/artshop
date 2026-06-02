@@ -12,6 +12,7 @@ export interface Product {
   imageAlt: string | null;
   miniature: string | null;
   origin: string | null;
+  source: string;
   createdAt: Date;
   updatedAt: Date;
   categoryId: string;
