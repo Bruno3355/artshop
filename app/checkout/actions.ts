@@ -6,35 +6,42 @@ import { CreateOrderItemDTO } from "@/src/core/domain/entities/dtos/createOrderI
 import { createOrderUseCase } from "@/src/core/use_cases/CreateOrder";
 import { redirect } from "next/navigation";
 import generateOrderNumber from "@/src/core/domain/utils/generateOrderNumber";
+import { CheckoutFormValues } from "@/src/schemas/inputsSchemas";
 
 export async function submitOrder(
-  formData: FormData,
+  formData: CheckoutFormValues,
   cartItems: CreateOrderItemDTO[],
   total: number,
 ) {
-  const createOrder = createOrderUseCase(
-    makeOrderRepository(),
-    makeOrderItemRepository(),
-  );
+  let orderNumber: string;
 
-  const order = await createOrder(
-    {
-      orderNumber: generateOrderNumber(),
-      customerName: formData.get("full-name") as string,
-      customerEmail: formData.get("e-mail") as string,
-      customerPhone: formData.get("phone") as string,
-      notes: formData.get("notes") as string,
-      shippingAddress: [
-        formData.get("street"),
-        formData.get("city"),
-        formData.get("zip"),
-      ]
-        .filter(Boolean)
-        .join(", "),
-      total,
-    },
-    cartItems,
-  );
+  try {
+    const createOrder = createOrderUseCase(
+      makeOrderRepository(),
+      makeOrderItemRepository(),
+    );
 
-  redirect(`/checkout/confirmation/${order.orderNumber}`);
+    const order = await createOrder(
+      {
+        orderNumber: generateOrderNumber(),
+        customerName: formData.fullname,
+        customerEmail: formData.email,
+        customerPhone: formData.phoneNumber,
+        notes: formData.comments || "",
+        shippingAddress: [
+          formData.streetAddress,
+          formData.city,
+          formData.postalCode,
+        ]
+          .filter(Boolean)
+          .join(", "),
+        total,
+      },
+      cartItems,
+    );
+
+    return { orderNumber: order.orderNumber };
+  } catch (error: any) {
+    throw new Error("Something went wrong", error);
+  }
 }

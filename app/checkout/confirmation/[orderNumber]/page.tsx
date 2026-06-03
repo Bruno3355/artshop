@@ -25,8 +25,8 @@ export default async function Confirmation({ params }: Props) {
         </div>
         <p>
           Thank you, <span className="underline">{order.customerName}</span> for
-          your purchase. Your item is being carefully packed and will be on its
-          way to you soon.
+          your purchase. Your item is being carefully packed and will not be on
+          its way to you soon.
         </p>
       </div>
       <Separator className="mt-container-y mb-section-y" />

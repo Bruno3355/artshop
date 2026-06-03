@@ -1,7 +1,10 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Field,
   FieldDescription,
+  FieldError,
   FieldGroup,
   FieldLabel,
   FieldLegend,
@@ -12,26 +15,60 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useCartStore } from "@/src/hooks/useCartStore";
 import { submitOrder } from "./actions";
+import { Controller, useForm } from "react-hook-form";
+import {
+  checkoutFormSchema,
+  CheckoutFormValues,
+} from "@/src/schemas/inputsSchemas";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export function CustomerInformationForm() {
+  const router = useRouter();
   const items = useCartStore((state) => state.items);
   const total = useCartStore((state) => state.total);
+  const clearCart = useCartStore((state) => state.clearCart);
 
-  async function handleSubmit(formData: FormData) {
-    await submitOrder(
-      formData,
-      items.map((item) => ({
-        productId: item.id,
-        quantity: item.quantity,
-        unitPrice: item.price,
-      })),
-      total,
-    );
+  const {
+    control,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm<CheckoutFormValues>({
+    resolver: zodResolver(checkoutFormSchema),
+    defaultValues: {
+      fullname: "",
+      email: "",
+      phoneNumber: "",
+      streetAddress: "",
+      city: "",
+      postalCode: "",
+      comments: "",
+    },
+  });
+
+  async function onSubmit(formData: CheckoutFormValues) {
+    try {
+      const result = await submitOrder(
+        formData,
+        items.map((item) => ({
+          productId: item.id,
+          quantity: item.quantity,
+          unitPrice: item.price,
+        })),
+        total,
+      );
+
+      clearCart();
+      router.push(`/checkout/confirmation/${result.orderNumber}`);
+    } catch (error) {
+      toast.error("Something went wrong.");
+    }
   }
 
   return (
     <div className="w-full">
-      <form action={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <FieldGroup>
           <FieldSet>
             <FieldLegend>Customer information</FieldLegend>
@@ -39,34 +76,63 @@ export function CustomerInformationForm() {
               This is a student project! Do not insert real data.
             </FieldDescription>
             <FieldGroup>
-              <Field>
-                <FieldLabel htmlFor="full-name">Full name</FieldLabel>
-                <Input
-                  id="full-name"
-                  name="full-name"
-                  placeholder="Insert your full name here"
-                  required
-                />
-              </Field>
-              <Field>
-                <FieldLabel htmlFor="e-mail">E-mail</FieldLabel>
-                <Input
-                  id="e-mail"
-                  name="e-mail"
-                  placeholder="xxxxxxx@xxxxxx.com"
-                  type="email"
-                  required
-                />
-              </Field>
-              <Field>
-                <FieldLabel htmlFor="phone">Phone number</FieldLabel>
-                <Input
-                  id="phone"
-                  name="phone"
-                  placeholder="+xx (xxx) xxx-xxxx"
-                  required
-                />
-              </Field>
+              <Controller
+                name="fullname"
+                control={control}
+                render={({ field, fieldState }) => (
+                  <Field>
+                    <FieldLabel htmlFor="fullname">Full name</FieldLabel>
+                    <Input
+                      {...field}
+                      id="fullname"
+                      placeholder="Insert your full name here"
+                      required
+                    />
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
+
+              <Controller
+                name="email"
+                control={control}
+                render={({ field, fieldState }) => (
+                  <Field>
+                    <FieldLabel htmlFor="email">E-mail</FieldLabel>
+                    <Input
+                      {...field}
+                      id="email"
+                      placeholder="xxxxxxx@xxxxxx.com"
+                      type="email"
+                      required
+                    />
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
+
+              <Controller
+                name="phoneNumber"
+                control={control}
+                render={({ field, fieldState }) => (
+                  <Field>
+                    <FieldLabel htmlFor="phoneNumber">Phone number</FieldLabel>
+                    <Input
+                      {...field}
+                      id="phoneNumber"
+                      placeholder="+xx (xxx) xxx-xxxx"
+                      required
+                    />
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
             </FieldGroup>
             <FieldSet>
               <FieldLegend>Address Information</FieldLegend>
@@ -75,54 +141,101 @@ export function CustomerInformationForm() {
                 deliver your order.
               </FieldDescription>
               <FieldGroup>
-                <Field>
-                  <FieldLabel htmlFor="street">Street Address</FieldLabel>
-                  <Input
-                    id="street"
-                    name="street"
-                    type="text"
-                    placeholder="123 Main St"
-                  />
-                </Field>
+                <Controller
+                  name="streetAddress"
+                  control={control}
+                  render={({ field, fieldState }) => (
+                    <Field>
+                      <FieldLabel htmlFor="streetAddress">
+                        Street Address
+                      </FieldLabel>
+                      <Input
+                        {...field}
+                        id="streetAddress"
+                        type="text"
+                        placeholder="123 Main St"
+                      />
+                      {fieldState.invalid && (
+                        <FieldError errors={[fieldState.error]} />
+                      )}
+                    </Field>
+                  )}
+                />
+
                 <div className="grid grid-cols-2 gap-4">
-                  <Field>
-                    <FieldLabel htmlFor="city">City</FieldLabel>
-                    <Input
-                      id="city"
-                      name="city"
-                      type="text"
-                      placeholder="New York"
-                    />
-                  </Field>
-                  <Field>
-                    <FieldLabel htmlFor="zip">Postal Code</FieldLabel>
-                    <Input
-                      id="zip"
-                      name="zip"
-                      type="text"
-                      placeholder="90502"
-                    />
-                  </Field>
+                  <Controller
+                    name="city"
+                    control={control}
+                    render={({ field, fieldState }) => (
+                      <Field>
+                        <FieldLabel htmlFor="city">City</FieldLabel>
+                        <Input
+                          {...field}
+                          id="city"
+                          type="text"
+                          placeholder="New York"
+                        />
+                        {fieldState.invalid && (
+                          <FieldError errors={[fieldState.error]} />
+                        )}
+                      </Field>
+                    )}
+                  />
+                  <Controller
+                    name="postalCode"
+                    control={control}
+                    render={({ field, fieldState }) => (
+                      <Field>
+                        <FieldLabel htmlFor="postalCode">
+                          Postal Code
+                        </FieldLabel>
+                        <Input
+                          {...field}
+                          id="postalCode"
+                          type="text"
+                          placeholder="90502"
+                        />
+                        {fieldState.invalid && (
+                          <FieldError errors={[fieldState.error]} />
+                        )}
+                      </Field>
+                    )}
+                  />
                 </div>
               </FieldGroup>
             </FieldSet>
           </FieldSet>
           <FieldSet>
             <FieldGroup>
-              <Field>
-                <FieldLabel htmlFor="notes">Comments</FieldLabel>
-                <Textarea
-                  id="notes"
-                  name="notes"
-                  placeholder="Add any additional comments"
-                  className="resize-none"
-                />
-              </Field>
+              <Controller
+                name="comments"
+                control={control}
+                render={({ field, fieldState }) => (
+                  <Field>
+                    <FieldLabel htmlFor="comments">Comments</FieldLabel>
+                    <Textarea
+                      {...field}
+                      id="comments"
+                      placeholder="Add any additional comments"
+                      className="resize-none"
+                    />
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
             </FieldGroup>
           </FieldSet>
           <Field orientation="horizontal">
-            <Button type="submit">Submit</Button>
-            <Button variant="outline" type="button">
+            <Button type="submit" disabled={isSubmitting}>
+              Submit
+            </Button>
+            <Button
+              variant="outline"
+              type="button"
+              onClick={() => router.back()}
+            >
               Cancel
             </Button>
           </Field>

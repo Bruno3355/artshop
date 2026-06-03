@@ -8,7 +8,6 @@ export default function proxy(request: NextRequest) {
   }
 
   const response = NextResponse.next();
-  response.cookies.delete("checkout_access"); //Ensures that the user can only access through the Cart button (not directly through URL)
   return response;
 }
 
