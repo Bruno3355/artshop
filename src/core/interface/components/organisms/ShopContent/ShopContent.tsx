@@ -11,7 +11,7 @@ export default async function ShopContent({ searchParams }: Props) {
   return (
     <div className="py-section-y px-section-x flex flex-col gap-y-section-y sm:gap-container-y">
       <div className="flex flex-col sm:flex-row gap-x-container-x items-start">
-        <aside className="w-full sm:w-fit sm:shrink-0 sm:min-w-fit flex flex-col gap-container-y sticky top-0">
+        <aside className="bg-background w-full sm:w-fit sm:shrink-0 sm:min-w-fit flex flex-col gap-container-y sticky top-0 z-100">
           <SearchBar />
           <FilterSidebar />
         </aside>

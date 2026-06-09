@@ -47,7 +47,7 @@ export const useCartStore = create<CartStore>()(
       },
 
       clearCart: () => {
-        const updatedItems = clearCart(get().items);
+        const updatedItems = clearCart();
         set({ items: updatedItems, total: calculateCartTotal(updatedItems) });
       },
     }),
