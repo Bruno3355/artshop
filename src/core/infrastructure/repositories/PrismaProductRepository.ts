@@ -48,17 +48,24 @@ export const PrismaProductRepository: IProductRepository = {
   },
 
   async search(query: string): Promise<Product[]> {
+    const terms = query
+      .split(",")
+      .map((t) => t.trim())
+      .filter(Boolean);
+
     const results = await prisma.product.findMany({
       where: {
-        OR: [
-          { name: { contains: query } },
-          { description: { contains: query } },
-          { origin: { contains: query } },
-          { category: { name: { contains: query } } },
-          { type: { contains: query } },
-          { dimensions: { contains: query } },
-          { condition: { contains: query } },
-        ],
+        OR: terms.map((term) => ({
+          OR: [
+            { name: { contains: term } },
+            { description: { contains: term } },
+            { origin: { contains: term } },
+            { category: { name: { contains: term } } },
+            { type: { contains: term } },
+            { dimensions: { contains: term } },
+            { condition: { contains: term } },
+          ],
+        })),
       },
       include: { category: true },
       orderBy: { createdAt: "desc" },

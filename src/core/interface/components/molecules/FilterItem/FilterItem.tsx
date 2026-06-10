@@ -16,21 +16,19 @@ interface FilterItemProps {
 }
 
 export default function FilterItem({ items }: FilterItemProps) {
-  const [selected, setSelected] = useState<string[]>([]);
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  function handleClick(id: string) {
-    setSelected((prev) =>
-      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id],
-    );
+  const currentQuery = searchParams.get("q") || "";
+  const selected = currentQuery ? currentQuery.split(",") : [];
 
+  function handleValueChange(newSelected: string[]) {
     const params = new URLSearchParams(searchParams.toString());
 
-    if (params.get("q") === id) {
+    if (newSelected.length === 0) {
       params.delete("q");
     } else {
-      params.set("q", id);
+      params.set("q", newSelected.join(","));
     }
 
     router.push(`/shop?${params.toString()}`);
@@ -41,7 +39,7 @@ export default function FilterItem({ items }: FilterItemProps) {
       type="multiple"
       orientation="vertical"
       value={selected}
-      onValueChange={setSelected}
+      onValueChange={handleValueChange}
       className="w-full outline-1 border-2 border-bg-primary"
     >
       {items.map((item, index) => (
@@ -49,7 +47,6 @@ export default function FilterItem({ items }: FilterItemProps) {
           key={item.id}
           value={item.id}
           className="w-full flex flex-col justify-center items-start min-h-12"
-          onClick={() => handleClick(item.id)}
         >
           <span className="w-full py-container-y px-container-x flex justify-between">
             {item.label}
