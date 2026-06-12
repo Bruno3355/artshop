@@ -28,9 +28,11 @@ export type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 export const phoneNumberSchema = z
   .string()
-  .regex(
-    /^\+?(?=(?:\D*\d){2,15}$)[1-9]\d*-?\d*$/,
-    "Please enter a valid phone number.",
+  .transform((val) => val.replace(/[^\d+]/g, ""))
+  .pipe(
+    z
+      .string()
+      .regex(/^\+?[1-9]\d{1,14}$/, "Please enter a valid phone number."),
   );
 
 export const streetAddressSchema = z
