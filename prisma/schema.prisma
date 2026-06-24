@@ -41,29 +41,7 @@ model Product {
   categoryId String
   category   Category @relation(fields: [categoryId], references: [id])
 
-  cartItems  CartItem[]
   orderItems OrderItem[]
-}
-
-model Cart {
-  id        String     @id @default(uuid())
-  sessionId String     @unique // from cookie/localStorage
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  cartItems CartItem[]
-}
-
-model CartItem {
-  id       String @id @default(uuid())
-  quantity Int    @default(1)
-
-  cartId String
-  cart   Cart   @relation(fields: [cartId], references: [id], onDelete: Cascade)
-
-  productId String
-  product   Product @relation(fields: [productId], references: [id])
-
-  @@unique([cartId, productId])
 }
 
 model Order {
