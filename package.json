@@ -47,5 +47,8 @@
     "tsx": "^4.22.0",
     "typescript": "^5"
   },
+  "prisma": {
+    "seed": "node --loader tsx prisma/seed.ts"
+  },
   "type": "module"
 }

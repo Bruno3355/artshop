@@ -1,14 +1,21 @@
-FROM node:20-alpine
+FROM node:22-alpine
 WORKDIR /app
 
+RUN apk add --no-cache netcat-openbsd
+
 COPY package*.json ./
-RUN npm ci
+COPY prisma ./prisma/
 
-COPY . .
+RUN npm install --ignore-scripts
+RUN npx prisma@7.8.0 generate
 
-ENV DATABASE_URL="mysql://root@db:3306/artshop_db"
-RUN npx prisma generate
+ENV NEXT_TELEMETRY_DISABLED=1
 
 EXPOSE 3000
 
-CMD ["sh", "-c", "npm run build && npm run setup && npm start"]
+CMD ["sh", "-c", "\
+    until nc -z db 3306; do sleep 2; done && \
+    npx prisma migrate deploy && \
+    npx prisma db seed && \
+    npm run dev \
+    "]
