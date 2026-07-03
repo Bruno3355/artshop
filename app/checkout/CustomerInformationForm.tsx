@@ -48,6 +48,11 @@ export function CustomerInformationForm() {
   });
 
   async function onSubmit(formData: CheckoutFormValues) {
+    if (items.length === 0) {
+      toast.warning("Your cart is empty. Add items before placing an order.");
+      return;
+    }
+
     try {
       const result = await submitOrder(
         formData,

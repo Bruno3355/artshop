@@ -32,7 +32,10 @@ export const phoneNumberSchema = z
   .pipe(
     z
       .string()
-      .regex(/^\+?[1-9]\d{1,14}$/, "Please enter a valid phone number."),
+      .regex(
+        /^\+?[1-9]([ \-()]*\d){1,14}$/,
+        "Please enter a valid phone number.",
+      ),
   );
 
 export const streetAddressSchema = z

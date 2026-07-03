@@ -18,7 +18,6 @@ services:
   app:
     build: .
     container_name: artshop_app
-    command: npm run dev
     environment:
       DATABASE_URL: "mysql://root@db:3306/artshop_db"
       DATABASE_HOST: "db"
