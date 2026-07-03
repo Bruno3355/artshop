@@ -15,6 +15,7 @@ EXPOSE 3000
 
 CMD ["sh", "-c", "\
     until nc -z db 3306; do sleep 2; done && \
+    npx prisma generate && \
     npx prisma migrate deploy && \
     npx prisma db seed && \
     npm run dev \
