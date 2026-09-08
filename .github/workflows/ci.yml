@@ -26,16 +26,28 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm ci 
+          npm ci
           npm install @microsoft/eslint-formatter-sarif@3.1.0 --no-save
 
       - name: Run ESLint
         env:
           SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
         run: |
+          set +e
           npx eslint . \
             --format @microsoft/eslint-formatter-sarif \
             --output-file eslint-results.sarif
+          SARIF_EXIT=$?
+
+          npx eslint . \
+            --format json \
+            --output-file eslint-report.json
+          JSON_EXIT=$?
+
+          set -e
+          if [ $SARIF_EXIT -ne 0 ] || [ $JSON_EXIT -ne 0 ]; then
+            exit 1
+          fi
 
       - name: Upload analysis results to GitHub
         if: always()
@@ -43,6 +55,14 @@ jobs:
         with:
           sarif_file: eslint-results.sarif
           wait-for-processing: true
+
+      - name: Upload ESLint JSON report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eslint-report
+          path: eslint-report.json
+          retention-days: 1
 
   test:
     name: Run Jest tests
@@ -72,10 +92,11 @@ jobs:
 
   sonarqube:
     name: SonarQube
-    needs: [eslint, test]
+    needs: [test]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+      - name: Checkout code
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
           fetch-depth: 0
 
@@ -85,6 +106,12 @@ jobs:
           name: coverage-report
           path: coverage/
 
+      - name: Download ESLint report
+        uses: actions/download-artifact@v4
+        with:
+          name: eslint-report
+          path: .
+
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@7006c4492b2e0ee0f816d36501671557c97f5995 # v8.1.0
         env:
@@ -92,3 +119,4 @@ jobs:
         with:
           args: >
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+            -Dsonar.eslint.reportPaths=eslint-report.json
