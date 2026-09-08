@@ -92,7 +92,8 @@ jobs:
 
   sonarqube:
     name: SonarQube
-    needs: [test]
+    needs: [eslint, test]
+    if: always() && needs.test.result == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
