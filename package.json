@@ -7,7 +7,9 @@
     "build": "next build",
     "setup": "prisma migrate deploy && prisma db seed",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -35,20 +37,28 @@
     "zustand": "^5.0.13"
   },
   "devDependencies": {
+    "@microsoft/eslint-formatter-sarif": "^3.1.0",
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20.19.41",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.13.3",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "dotenv": "^17.4.2",
     "eslint": "^9.39.5",
     "eslint-config-next": "16.2.1",
+    "jest": "^30.5.1",
     "prisma": "^7.10.0",
     "tailwindcss": "^4",
+    "ts-jest": "^29.4.12",
     "tsx": "^4.22.0",
-    "typescript": "^5"
+    "typescript": "^5.9.3"
   },
   "prisma": {
     "seed": "node --loader tsx prisma/seed.ts"
+  },
+  "jest": {
+    "coverageReporters": ["lcov", "text", "html"],
+    "coverageDirectory": "coverage"
   },
   "type": "module"
 }
