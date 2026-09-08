@@ -56,9 +56,5 @@
   "prisma": {
     "seed": "node --loader tsx prisma/seed.ts"
   },
-  "jest": {
-    "coverageReporters": ["lcov", "text", "html"],
-    "coverageDirectory": "coverage"
-  },
   "type": "module"
 }
